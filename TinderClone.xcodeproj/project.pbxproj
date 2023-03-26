@@ -8,22 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A20C29CFE65A00008069 /* AppDelegate.swift */; };
-		2004A20F29CFE65A00008069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A20E29CFE65A00008069 /* SceneDelegate.swift */; };
-		2004A21129CFE65A00008069 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A21029CFE65A00008069 /* ViewController.swift */; };
-		2004A21429CFE65A00008069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21229CFE65A00008069 /* Main.storyboard */; };
 		2004A21629CFE65B00008069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21529CFE65B00008069 /* Assets.xcassets */; };
 		2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21729CFE65B00008069 /* LaunchScreen.storyboard */; };
+		2004A22829CFE73F00008069 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A22729CFE73F00008069 /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2004A20929CFE65A00008069 /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2004A20C29CFE65A00008069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2004A20E29CFE65A00008069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2004A21029CFE65A00008069 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2004A21329CFE65A00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2004A21529CFE65B00008069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2004A21829CFE65B00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2004A21A29CFE65B00008069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2004A22729CFE73F00008069 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +37,7 @@
 		2004A20029CFE65A00008069 = {
 			isa = PBXGroup;
 			children = (
+				20C9CFA029CFE86500BF6446 /* README.md */,
 				2004A20B29CFE65A00008069 /* TinderClone */,
 				2004A20A29CFE65A00008069 /* Products */,
 			);
@@ -56,15 +54,61 @@
 		2004A20B29CFE65A00008069 /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
+				2004A22529CFE69600008069 /* Model */,
+				2004A22629CFE6A200008069 /* View */,
+				2004A22429CFE69100008069 /* ViewModel */,
+				2004A22329CFE68E00008069 /* Controller */,
+				2004A22129CFE68000008069 /* API */,
+				2004A22029CFE67500008069 /* Utils */,
 				2004A20C29CFE65A00008069 /* AppDelegate.swift */,
-				2004A20E29CFE65A00008069 /* SceneDelegate.swift */,
-				2004A21029CFE65A00008069 /* ViewController.swift */,
-				2004A21229CFE65A00008069 /* Main.storyboard */,
 				2004A21529CFE65B00008069 /* Assets.xcassets */,
 				2004A21729CFE65B00008069 /* LaunchScreen.storyboard */,
 				2004A21A29CFE65B00008069 /* Info.plist */,
 			);
 			path = TinderClone;
+			sourceTree = "<group>";
+		};
+		2004A22029CFE67500008069 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2004A22129CFE68000008069 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		2004A22329CFE68E00008069 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2004A22729CFE73F00008069 /* HomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2004A22429CFE69100008069 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2004A22529CFE69600008069 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2004A22629CFE6A200008069 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +171,6 @@
 			files = (
 				2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */,
 				2004A21629CFE65B00008069 /* Assets.xcassets in Resources */,
-				2004A21429CFE65A00008069 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +181,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2004A21129CFE65A00008069 /* ViewController.swift in Sources */,
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
-				2004A20F29CFE65A00008069 /* SceneDelegate.swift in Sources */,
+				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2004A21229CFE65A00008069 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2004A21329CFE65A00008069 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2004A21729CFE65B00008069 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +326,6 @@
 				INFOPLIST_FILE = TinderClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +353,6 @@
 				INFOPLIST_FILE = TinderClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
