@@ -56,6 +56,7 @@ class CardView: UIView {
         layer.cornerRadius = 10
         clipsToBounds = true
         
+        configureGestureRecognizers()
         setupViews()
     }
     
@@ -112,5 +113,39 @@ extension CardView {
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradientLayer.locations = [0.5, 1.1]
         layer.addSublayer(gradientLayer)
+    }
+    
+    func configureGestureRecognizers() {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleChangePhoto))
+        
+        addGestureRecognizer(pan)
+        addGestureRecognizer(tap)
+    }
+}
+
+// MARK: - Actions
+
+extension CardView {
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: nil)
+        
+        switch sender.state {
+        case .began:
+            print("DEBUG: Pan did begin")
+        case .changed:
+            let degrees: CGFloat = translation.x / 20
+            let angle = degrees * .pi / 180
+            let rotationalTransform = CGAffineTransform(rotationAngle: angle)
+            
+            self.transform = rotationalTransform.translatedBy(x: translation.x, y: translation.y)
+        case .ended:
+            print("DEBUG: Pad ended")
+        default: break
+        }
+    }
+    
+    @objc func handleChangePhoto(_ sender: UITapGestureRecognizer) {
+        print("DEBUG: Did tap on photo")
     }
 }

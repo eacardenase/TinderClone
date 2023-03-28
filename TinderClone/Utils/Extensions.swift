@@ -17,8 +17,10 @@ extension UIColor {
 
 extension UIViewController {
     func configureGradientLayer() {
-        let topColor = #colorLiteral(red: 0.9921568627, green: 0.3568627451, blue: 0.3725490196, alpha: 1)
-        let bottomColor = #colorLiteral(red: 0.8980392157, green: 0, blue: 0.4470588235, alpha: 1)
+//        let topColor = #colorLiteral(red: 0.9921568627, green: 0.3568627451, blue: 0.3725490196, alpha: 1)
+        let topColor = UIColor(red: 0.99, green: 0.36, blue: 0.37, alpha: 1.00)
+//        let bottomColor = #colorLiteral(red: 0.8980392157, green: 0, blue: 0.4470588235, alpha: 1)
+        let bottomColor = UIColor(red: 0.90, green: 0.00, blue: 0.45, alpha: 1.00)
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
