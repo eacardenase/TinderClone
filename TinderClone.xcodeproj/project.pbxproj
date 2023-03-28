@@ -11,6 +11,7 @@
 		2004A21629CFE65B00008069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21529CFE65B00008069 /* Assets.xcassets */; };
 		2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21729CFE65B00008069 /* LaunchScreen.storyboard */; };
 		2004A22829CFE73F00008069 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A22729CFE73F00008069 /* HomeController.swift */; };
+		206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,8 +19,9 @@
 		2004A20C29CFE65A00008069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2004A21529CFE65B00008069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2004A21829CFE65B00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2004A21A29CFE65B00008069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2004A22729CFE73F00008069 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		2056F92B29D2788900AF978C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,9 +63,10 @@
 				2004A22129CFE68000008069 /* API */,
 				2004A22029CFE67500008069 /* Utils */,
 				2004A20C29CFE65A00008069 /* AppDelegate.swift */,
+				206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */,
 				2004A21529CFE65B00008069 /* Assets.xcassets */,
 				2004A21729CFE65B00008069 /* LaunchScreen.storyboard */,
-				2004A21A29CFE65B00008069 /* Info.plist */,
+				2056F92B29D2788900AF978C /* Info.plist */,
 			);
 			path = TinderClone;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
 				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
+				206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
