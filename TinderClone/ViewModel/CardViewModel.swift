@@ -7,10 +7,12 @@
 
 import UIKit
 
-struct CardViewModel {
+class CardViewModel {
     
-    let user: User
+    private let user: User
     
+    private var imageIndex = 0
+    lazy var imageToShow = user.images.first
     let userInfoText: NSAttributedString
     
     init(user: User) {
@@ -27,5 +29,19 @@ struct CardViewModel {
         ]))
         
         self.userInfoText = attributedText
+    }
+    
+    func showNextPhoto() {
+        guard imageIndex < user.images.count - 1 else { return }
+        
+        imageIndex += 1
+        self.imageToShow = user.images[imageIndex]
+    }
+    
+    func showPreviousPhoto() {
+        guard imageIndex > 0 else { return }
+        
+        imageIndex -= 1
+        self.imageToShow = user.images[imageIndex]
     }
 }

@@ -76,7 +76,7 @@ class CardView: UIView {
 extension CardView {
     func setupViews() {
         
-        imageView.image = viewModel.user.images.first!
+        imageView.image = viewModel.imageToShow
         
         addSubview(imageView)
         
@@ -176,6 +176,15 @@ extension CardView {
     }
     
     @objc func handleChangePhoto(_ sender: UITapGestureRecognizer) {
-        print("DEBUG: Did tap on photo")
+        let location = sender.location(in: nil).x
+        let shouldShowNextPhoto = location > self.frame.width / 2
+        
+        if shouldShowNextPhoto {
+            viewModel.showNextPhoto()
+        } else {
+            viewModel.showPreviousPhoto()
+        }
+        
+        imageView.image = viewModel.imageToShow
     }
 }
