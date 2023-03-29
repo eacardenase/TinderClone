@@ -31,19 +31,8 @@ class RegistrationController: UIViewController {
         return button
     }()
     private let goToLoginButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = CustomButton(title: "Already have an account?", subtitle: "Sing in", type: .system)
         
-        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ])
-        
-        attributedTitle.append(NSAttributedString(string: "Sign in", attributes: [
-            .foregroundColor: UIColor.white,
-            .font: UIFont.boldSystemFont(ofSize: 16)
-        ]))
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
         
         return button
