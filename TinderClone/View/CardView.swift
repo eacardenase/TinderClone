@@ -16,28 +16,21 @@ class CardView: UIView {
     
     // MARK: - Properties
     
+    private let viewModel: CardViewModel
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "jane1")
         
         return imageView
     }()
     
-    private let infoLabel: UILabel = {
+    private lazy var infoLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "Jane Doe", attributes: [
-            .font: UIFont.systemFont(ofSize: 32, weight: .heavy),
-            .foregroundColor: UIColor.white
-        ])
         
-        attributedText.append(NSAttributedString(string: "  18", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24),
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ]))
-        
-        label.attributedText = attributedText
+        label.numberOfLines = 2
+        label.attributedText = viewModel.userInfoText
         
         return label
     }()
@@ -54,8 +47,11 @@ class CardView: UIView {
     
     // MARK: - Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModel: CardViewModel) {
+        
+        self.viewModel = viewModel
+        
+        super.init(frame: .zero)
         
         backgroundColor = .systemPurple
         layer.cornerRadius = 10
@@ -79,6 +75,9 @@ class CardView: UIView {
 
 extension CardView {
     func setupViews() {
+        
+        imageView.image = viewModel.user.images.first!
+        
         addSubview(imageView)
         
         configureGradient()

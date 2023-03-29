@@ -15,6 +15,8 @@
 		2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */; };
 		2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F429D33797002828F4 /* BottomControlsStackView.swift */; };
 		2041D1F729D340E1002828F4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F629D340E1002828F4 /* CardView.swift */; };
+		204EAE3229D48922000E545D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3129D48922000E545D /* User.swift */; };
+		204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3329D48A17000E545D /* CardViewModel.swift */; };
 		206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		2041D1F429D33797002828F4 /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
 		2041D1F629D340E1002828F4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		204EAE3129D48922000E545D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		204EAE3329D48A17000E545D /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		2056F92B29D2788900AF978C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 		2004A22429CFE69100008069 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				204EAE3329D48A17000E545D /* CardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 		2004A22529CFE69600008069 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				204EAE3129D48922000E545D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,9 +206,11 @@
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
 				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
+				204EAE3229D48922000E545D /* User.swift in Sources */,
 				2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */,
 				206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */,
 				2041D1F129D32433002828F4 /* Extensions.swift in Sources */,
+				204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

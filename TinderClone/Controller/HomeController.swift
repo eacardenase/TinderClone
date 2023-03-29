@@ -60,8 +60,12 @@ extension HomeController {
     }
     
     func configureCards() {
-        let cardView1 = CardView()
-        let cardView2 = CardView()
+        
+        let user1 = User(name: "Jane Done", age: 22, images: [UIImage(named: "jane1")!, UIImage(named: "jane2")!, UIImage(named: "jane3")!])
+        let user2 = User(name: "Megan Fox", age: 21, images: [UIImage(named: "kelly1")!, UIImage(named: "kelly2")!, UIImage(named: "kelly3")!])
+        
+        let cardView1 = CardView(viewModel: CardViewModel(user: user1))
+        let cardView2 = CardView(viewModel: CardViewModel(user: user2))
         
         deckView.addSubview(cardView1)
         deckView.addSubview(cardView2)
