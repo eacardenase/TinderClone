@@ -20,39 +20,9 @@ class LoginController: UIViewController {
         return imageView
     }()
     
-    private let emailTextField: UITextField = {
-        let textField = UITextField()
-       
-        textField.borderStyle = .none
-        textField.textColor = .white
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.2)
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.layer.cornerRadius = 5
-        textField.setLeftPaddingPoints(12)
-        textField.setRightPaddingPoints(12)
-        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor(white: 1, alpha: 0.7)
-        ])
-        
-        return textField
-    }()
+    private let emailTextField = CustomTextField(placeholderText: "Email")
     
-    private let passwordTextField: UITextField = {
-        let textField = UITextField()
-       
-        textField.borderStyle = .none
-        textField.textColor = .white
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.2)
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.layer.cornerRadius = 5
-        textField.setLeftPaddingPoints(12)
-        textField.setRightPaddingPoints(12)
-        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor(white: 1, alpha: 0.7)
-        ])
-        
-        return textField
-    }()
+    private let passwordTextField = CustomTextField(placeholderText: "Password", isSecure: true)
     
     // MARK: Lifecycle
     
