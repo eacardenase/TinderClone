@@ -17,6 +17,9 @@
 		2041D1F729D340E1002828F4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F629D340E1002828F4 /* CardView.swift */; };
 		204EAE3229D48922000E545D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3129D48922000E545D /* User.swift */; };
 		204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3329D48A17000E545D /* CardViewModel.swift */; };
+		204EAE3729D4C1BA000E545D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3629D4C1BA000E545D /* LoginController.swift */; };
+		204EAE3929D4C1C3000E545D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3829D4C1C3000E545D /* RegistrationController.swift */; };
+		204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3A29D4CA83000E545D /* UITextField+Utils.swift */; };
 		206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,9 @@
 		2041D1F629D340E1002828F4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		204EAE3129D48922000E545D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		204EAE3329D48A17000E545D /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		204EAE3629D4C1BA000E545D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		204EAE3829D4C1C3000E545D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		204EAE3A29D4CA83000E545D /* UITextField+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Utils.swift"; sourceTree = "<group>"; };
 		2056F92B29D2788900AF978C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				2041D1F029D32433002828F4 /* Extensions.swift */,
+				204EAE3A29D4CA83000E545D /* UITextField+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -101,6 +108,7 @@
 		2004A22329CFE68E00008069 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				204EAE3529D4C1AC000E545D /* Authentication */,
 				2004A22729CFE73F00008069 /* HomeController.swift */,
 			);
 			path = Controller;
@@ -130,6 +138,15 @@
 				2041D1F629D340E1002828F4 /* CardView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		204EAE3529D4C1AC000E545D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				204EAE3629D4C1BA000E545D /* LoginController.swift */,
+				204EAE3829D4C1C3000E545D /* RegistrationController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,14 +220,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2041D1F729D340E1002828F4 /* CardView.swift in Sources */,
+				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
 				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
 				204EAE3229D48922000E545D /* User.swift in Sources */,
 				2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */,
+				204EAE3929D4C1C3000E545D /* RegistrationController.swift in Sources */,
 				206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */,
 				2041D1F129D32433002828F4 /* Extensions.swift in Sources */,
 				204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */,
+				204EAE3729D4C1BA000E545D /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
