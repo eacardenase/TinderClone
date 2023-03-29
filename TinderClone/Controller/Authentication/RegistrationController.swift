@@ -15,5 +15,15 @@ class RegistrationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureUI()
+    }
+}
+
+// MARK: - Helpers
+
+extension RegistrationController {
+    private func configureUI() {
+        view.backgroundColor = .systemPurple
     }
 }

@@ -21,6 +21,7 @@
 		204EAE3929D4C1C3000E545D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3829D4C1C3000E545D /* RegistrationController.swift */; };
 		204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3A29D4CA83000E545D /* UITextField+Utils.swift */; };
 		204EAE3D29D4CC9C000E545D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3C29D4CC9C000E545D /* CustomTextField.swift */; };
+		204EAE3F29D4DD4C000E545D /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3E29D4DD4C000E545D /* AuthButton.swift */; };
 		206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		204EAE3829D4C1C3000E545D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		204EAE3A29D4CA83000E545D /* UITextField+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Utils.swift"; sourceTree = "<group>"; };
 		204EAE3C29D4CC9C000E545D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		204EAE3E29D4DD4C000E545D /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		2056F92B29D2788900AF978C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				2041D1F029D32433002828F4 /* Extensions.swift */,
 				204EAE3C29D4CC9C000E545D /* CustomTextField.swift */,
 				204EAE3A29D4CA83000E545D /* UITextField+Utils.swift */,
+				204EAE3E29D4DD4C000E545D /* AuthButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				204EAE3D29D4CC9C000E545D /* CustomTextField.swift in Sources */,
+				204EAE3F29D4DD4C000E545D /* AuthButton.swift in Sources */,
 				2041D1F729D340E1002828F4 /* CardView.swift in Sources */,
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,

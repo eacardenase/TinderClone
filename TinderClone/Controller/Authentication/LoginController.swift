@@ -21,8 +21,33 @@ class LoginController: UIViewController {
     }()
     
     private let emailTextField = CustomTextField(placeholderText: "Email")
-    
     private let passwordTextField = CustomTextField(placeholderText: "Password", isSecure: true)
+    private let authButton: AuthButton = {
+        let button = AuthButton(title: "Log In", type: .system)
+        
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let goToRegistrationButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an accouny?  ", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ])
+        
+        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [
+            .foregroundColor: UIColor.white,
+            .font: UIFont.boldSystemFont(ofSize: 16)
+        ]))
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(handleShowRegistration), for: .touchUpInside)
+        
+        return button
+    }()
     
     // MARK: Lifecycle
     
@@ -40,16 +65,18 @@ extension LoginController {
         configureNavBar()
         configureGradientLayer()
         
-        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField])
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, authButton])
         
         stackView.axis = .vertical
         stackView.spacing = 16
         
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        goToRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(iconImageView)
         view.addSubview(stackView)
+        view.addSubview(goToRegistrationButton)
         
         // iconImageView
         NSLayoutConstraint.activate([
@@ -64,6 +91,13 @@ extension LoginController {
             stackView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 24),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32)
+        ])
+        
+        // goToRegistrationButton
+        NSLayoutConstraint.activate([
+            goToRegistrationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            goToRegistrationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            goToRegistrationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -81,5 +115,18 @@ extension LoginController {
     func configureNavBar() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
+    }
+}
+
+// MARK: - Actions
+
+extension LoginController {
+    @objc private func handleLogin(_ sender: UIButton) {
+        print("DEBUG: Login button tapped")
+    }
+    
+    @objc private func handleShowRegistration(_ sender: UIButton) {
+        
+        navigationController?.pushViewController(RegistrationController(), animated: true)
     }
 }
