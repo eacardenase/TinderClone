@@ -100,7 +100,11 @@ extension RegistrationController {
 
 extension RegistrationController {
     @objc private func handleSelectPhoto(_ sender: UIButton) {
-        print("DEBUG: Handle select photo tapped")
+        let picker = UIImagePickerController()
+        
+        picker.delegate = self
+        
+        present(picker, animated: true)
     }
     
     @objc private func handleRegisterUser(_ sender: UIButton) {
@@ -109,4 +113,23 @@ extension RegistrationController {
     @objc private func handleShowLogin(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let image = info[.originalImage] as? UIImage
+        
+        selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        selectPhotoButton.imageView?.contentMode = .scaleAspectFill
+        selectPhotoButton.layer.borderColor = UIColor(white: 1, alpha: 0.7).cgColor
+        selectPhotoButton.layer.borderWidth = 3
+        selectPhotoButton.layer.cornerRadius = 10
+        
+        dismiss(animated: true)
+    }
+    
 }
