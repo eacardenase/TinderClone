@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeController: UIViewController {
     
@@ -27,15 +28,17 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkIfUserIsLoggedIn()
         configureUI()
         configureCards()
+//        logout()
     }
     
 }
 
+// MARK: - Helpers
+
 extension HomeController {
-    
-    // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
@@ -88,5 +91,38 @@ extension HomeController {
             cardView2.trailingAnchor.constraint(equalTo: deckView.trailingAnchor),
             cardView2.bottomAnchor.constraint(equalTo: deckView.bottomAnchor)
         ])
+    }
+    
+    private func presentLoginController() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            
+            nav.modalPresentationStyle = .fullScreen
+            
+            self.present(nav, animated: true)
+        }
+    }
+}
+
+// MARK: - API
+
+extension HomeController {
+    private func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            presentLoginController()
+        } else {
+            print("DEBUG: User is logged in")
+        }
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            
+            presentLoginController()
+        } catch {
+            print("DEBUG: Failed to sign out \(error.localizedDescription)")
+        }
     }
 }
