@@ -26,6 +26,9 @@ class RegistrationController: UIViewController {
     private let emailTextField = CustomTextField(placeholderText: "Email")
     private let fullnameTextField = CustomTextField(placeholderText: "Full Name")
     private let passwordTextField = CustomTextField(placeholderText: "Password", isSecure: true)
+    
+    private var profileImage: UIImage?
+    
     private let signupButton: AuthButton = {
         let button = AuthButton(title: "Sign Up", type: .system)
         
@@ -128,7 +131,32 @@ extension RegistrationController {
     }
     
     @objc private func handleRegisterUser(_ sender: UIButton) {
-        print("DEBUG: Handle sign up tapped")
+        
+        guard let email = emailTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let profileImage = profileImage else {
+            
+            let ac = UIAlertController(title: "Oops!", message: "You need to add a photo in order to create a profile", preferredStyle: .alert)
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            
+            return
+        }
+        
+        let credentials = AuthCredentials(email: email, fullname: fullname, password: password, profileImage: profileImage)
+        
+        AuthService.registerUser(withCredentials: credentials) { error in
+            if let error = error {
+                print("DEBUG: Error signing user up: \(error.localizedDescription)")
+                
+                return
+            }
+            
+            print("DEBUG: Successfully registered user")
+        }
+        
     }
     @objc private func handleShowLogin(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -154,6 +182,8 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let image = info[.originalImage] as? UIImage
+        
+        profileImage = image
         
         selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         selectPhotoButton.imageView?.contentMode = .scaleAspectFill
