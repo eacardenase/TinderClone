@@ -117,7 +117,20 @@ extension LoginController {
 
 extension LoginController {
     @objc private func handleLogin(_ sender: UIButton) {
-        print("DEBUG: Login button tapped")
+        
+        guard let email = emailTextField.text,
+        let password = passwordTextField.text else { return }
+        
+        AuthService.logUserIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Error login user in \(error.localizedDescription)")
+                
+                return
+            }
+            
+            self.dismiss(animated: true)
+        }
+        
     }
     
     @objc private func handleShowRegistration(_ sender: UIButton) {

@@ -154,7 +154,7 @@ extension RegistrationController {
                 return
             }
             
-            print("DEBUG: Successfully registered user")
+            self.dismiss(animated: true)
         }
         
     }

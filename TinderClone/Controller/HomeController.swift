@@ -31,7 +31,7 @@ class HomeController: UIViewController {
         checkIfUserIsLoggedIn()
         configureUI()
         configureCards()
-//        logout()
+        logout()
     }
     
 }
