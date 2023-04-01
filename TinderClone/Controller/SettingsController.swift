@@ -13,7 +13,7 @@ class SettingsController: UITableViewController {
     
     private let headerView = SettingsHeader()
     private let imagePicker = UIImagePickerController()
-    private var imageIndex = 0
+    private var selectedButton: UIButton?
     
     // MARK: - Lifecycle
     
@@ -45,7 +45,9 @@ extension SettingsController {
     }
     
     private func setHeaderImage(_ image: UIImage?) {
-        headerView.buttons[imageIndex].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        guard let button = selectedButton else { return }
+        
+        button.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
 }
 
@@ -64,8 +66,8 @@ extension SettingsController {
 // MARK: - SettingsHeaderDelegate
 
 extension SettingsController: SettingsHeaderDelegate {
-    func settingsHeader(_ header: SettingsHeader, didSelect index: Int) {
-        imageIndex = index
+    func settingsHeader(_ header: SettingsHeader, didSelect button: UIButton) {
+        selectedButton = button
         
         present(imagePicker, animated: true)
     }

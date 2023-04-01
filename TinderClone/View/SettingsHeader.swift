@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingsHeaderDelegate: AnyObject {
-    func settingsHeader(_ header: SettingsHeader, didSelect index: Int)
+    func settingsHeader(_ header: SettingsHeader, didSelect button: UIButton)
 }
 
 class SettingsHeader: UIView {
@@ -16,8 +16,6 @@ class SettingsHeader: UIView {
     // MARK: - Properties
     
     weak var delegate: SettingsHeaderDelegate?
-    
-    var buttons = [UIButton]()
     
     // MARK: - Lifecycle
     
@@ -42,16 +40,14 @@ extension SettingsHeader {
     private func configureUI() {
         backgroundColor = .systemGroupedBackground
         
-        let button1 = createButton(0)
-        let button2 = createButton(1)
-        let button3 = createButton(2)
+        let button1 = createButton()
+        let button2 = createButton()
+        let button3 = createButton()
         let stackView = UIStackView(arrangedSubviews: [button2, button3])
         
         button1.translatesAutoresizingMaskIntoConstraints = false
         button2.translatesAutoresizingMaskIntoConstraints = false
         button3.translatesAutoresizingMaskIntoConstraints = false
-        
-        buttons.append(contentsOf: [button1, button2, button3])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -78,7 +74,7 @@ extension SettingsHeader {
         ])
     }
     
-    private func createButton(_ index: Int) -> UIButton {
+    private func createButton() -> UIButton {
         let button = UIButton(type: .system)
         
         button.setTitle("Select photo", for: .normal)
@@ -87,7 +83,6 @@ extension SettingsHeader {
         button.clipsToBounds = true
         button.backgroundColor = .white
         button.imageView?.contentMode = .scaleAspectFill
-        button.tag = index
         
         return button
     }
@@ -97,6 +92,6 @@ extension SettingsHeader {
 
 extension SettingsHeader {
     @objc private func handleSelectPhoto(_ sender: UIButton) {
-        delegate?.settingsHeader(self, didSelect: sender.tag)
+        delegate?.settingsHeader(self, didSelect: sender)
     }
 }
