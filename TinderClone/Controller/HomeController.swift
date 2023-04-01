@@ -12,6 +12,12 @@ class HomeController: UIViewController {
     
     // MARK: - Properties
     
+    private var viewModels = [CardViewModel]() {
+        didSet {
+            configureCards()
+        }
+    }
+    
     private let topStack = HomeNavigationStackView()
     private let deckView: UIView = {
         let view = UIView()
@@ -30,8 +36,9 @@ class HomeController: UIViewController {
         
         checkIfUserIsLoggedIn()
         configureUI()
-        configureCards()
-        logout()
+        fetchUser()
+        fetchUsers()
+//        logout()
     }
     
 }
@@ -64,33 +71,20 @@ extension HomeController {
     
     func configureCards() {
         
-        let user1 = User(name: "Jane Done", age: 22, images: [UIImage(named: "jane1")!, UIImage(named: "jane2")!, UIImage(named: "jane3")!])
-        let user2 = User(name: "Megan Fox", age: 21, images: [UIImage(named: "kelly1")!, UIImage(named: "kelly2")!, UIImage(named: "kelly3")!])
-        
-        let cardView1 = CardView(viewModel: CardViewModel(user: user1))
-        let cardView2 = CardView(viewModel: CardViewModel(user: user2))
-        
-        deckView.addSubview(cardView1)
-        deckView.addSubview(cardView2)
-        
-        cardView1.translatesAutoresizingMaskIntoConstraints = false
-        cardView2.translatesAutoresizingMaskIntoConstraints = false
-        
-        // cardView1
-        NSLayoutConstraint.activate([
-            cardView1.topAnchor.constraint(equalTo: deckView.topAnchor),
-            cardView1.leadingAnchor.constraint(equalTo: deckView.leadingAnchor),
-            cardView1.trailingAnchor.constraint(equalTo: deckView.trailingAnchor),
-            cardView1.bottomAnchor.constraint(equalTo: deckView.bottomAnchor)
-        ])
-        
-        // cardView2
-        NSLayoutConstraint.activate([
-            cardView2.topAnchor.constraint(equalTo: deckView.topAnchor),
-            cardView2.leadingAnchor.constraint(equalTo: deckView.leadingAnchor),
-            cardView2.trailingAnchor.constraint(equalTo: deckView.trailingAnchor),
-            cardView2.bottomAnchor.constraint(equalTo: deckView.bottomAnchor)
-        ])
+        viewModels.forEach { viewModel in
+            let cardView = CardView(viewModel: viewModel)
+            
+            cardView.translatesAutoresizingMaskIntoConstraints = false
+            
+            deckView.addSubview(cardView)
+            
+            NSLayoutConstraint.activate([
+                cardView.topAnchor.constraint(equalTo: deckView.topAnchor),
+                cardView.leadingAnchor.constraint(equalTo: deckView.leadingAnchor),
+                cardView.trailingAnchor.constraint(equalTo: deckView.trailingAnchor),
+                cardView.bottomAnchor.constraint(equalTo: deckView.bottomAnchor)
+            ])
+        }
     }
     
     private func presentLoginController() {
@@ -108,6 +102,26 @@ extension HomeController {
 // MARK: - API
 
 extension HomeController {
+    
+    private func fetchUser() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Service.fetchUser(withUid: uid) { user in
+            
+            print("DEBUG: User name is \(user.name)")
+            
+        }
+    }
+    
+    private func fetchUsers() {
+        
+        Service.fetchUsers { users in
+            self.viewModels = users.map({ CardViewModel(user: $0) })
+        }
+        
+    }
+    
     private func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser == nil {
             presentLoginController()
@@ -116,7 +130,7 @@ extension HomeController {
         }
     }
     
-    func logout() {
+    private func logout() {
         do {
             try Auth.auth().signOut()
             

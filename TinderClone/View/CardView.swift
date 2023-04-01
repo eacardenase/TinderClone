@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum SwipeDirection: Int {
     case left = -1
@@ -76,7 +77,8 @@ class CardView: UIView {
 extension CardView {
     func setupViews() {
         
-        imageView.image = viewModel.imageToShow
+//        imageView.image = viewModel.imageURL
+        imageView.sd_setImage(with: viewModel.imageURL)
         
         addSubview(imageView)
         
@@ -185,6 +187,6 @@ extension CardView {
             viewModel.showPreviousPhoto()
         }
         
-        imageView.image = viewModel.imageToShow
+//        imageView.image = viewModel.imageURL
     }
 }

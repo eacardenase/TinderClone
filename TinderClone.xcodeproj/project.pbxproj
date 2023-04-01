@@ -34,6 +34,7 @@
 		20A8A81929D5F26B0074B8CF /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 20A8A81829D5F26B0074B8CF /* JGProgressHUD */; };
 		20A8A81B29D60A200074B8CF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8A81A29D60A200074B8CF /* AuthService.swift */; };
 		20A8A81D29D60A290074B8CF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8A81C29D60A290074B8CF /* Service.swift */; };
+		20CB72B829D7309700646525 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB72B729D7309700646525 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		20A8A81A29D60A200074B8CF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		20A8A81C29D60A290074B8CF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		20CB72B729D7309700646525 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				204EAE3E29D4DD4C000E545D /* AuthButton.swift */,
 				204EAE4229D4F8DC000E545D /* UIViewController+Utils.swift */,
 				204EAE4429D4FE41000E545D /* CustomButton.swift */,
+				20CB72B729D7309700646525 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */,
 				204EAE3929D4C1C3000E545D /* RegistrationController.swift in Sources */,
 				206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */,
+				20CB72B829D7309700646525 /* Constants.swift in Sources */,
 				2041D1F129D32433002828F4 /* Extensions.swift in Sources */,
 				204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */,
 				204EAE3729D4C1BA000E545D /* LoginController.swift in Sources */,

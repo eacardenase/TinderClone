@@ -11,6 +11,30 @@ import FirebaseStorage
 
 struct Service {
     
+    static func fetchUser(withUid uid: String, completion: @escaping (User) -> Void) {
+        K.FStore.COLLECTION_USER.document(uid).getDocument { snapshot, error in
+            
+            guard let userData = snapshot?.data() else { return }
+            let user = User(dictionary: userData)
+            
+            completion(user)
+        }
+    }
+    
+    static func fetchUsers(completion: @escaping ([User]) -> Void) {
+        var users = [User]()
+        
+        K.FStore.COLLECTION_USER.getDocuments { snapshot, error in
+            snapshot?.documents.forEach({ document in
+                let user = User(dictionary: document.data())
+                
+                users.append(user)
+            })
+            
+            completion(users)
+        }
+    }
+    
     static func uploadImage(image: UIImage, completion: @escaping (String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.75) else {
             

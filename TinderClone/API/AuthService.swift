@@ -45,9 +45,9 @@ struct AuthService {
                     "imageURL": imageURL,
                     "uid": uid,
                     "age": 19
-                ] // as [String: Any]
+                ] as [String: Any]
                 
-                Firestore.firestore().collection("users").document(uid).setData(data, completion: completion)
+                K.FStore.COLLECTION_USER.document(uid).setData(data, completion: completion)
             }
         }
         
