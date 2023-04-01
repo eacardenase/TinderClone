@@ -34,6 +34,8 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        topStack.delegate = self
+        
         checkIfUserIsLoggedIn()
         configureUI()
         fetchUser()
@@ -138,5 +140,23 @@ extension HomeController {
         } catch {
             print("DEBUG: Failed to sign out \(error.localizedDescription)")
         }
+    }
+}
+
+// MARK: - HomeNavigationStackViewDelegate
+
+extension HomeController: HomeNavigationStackViewDelegate {
+    
+    func showSettings() {
+        let controller = SettingsController()
+        let nav = UINavigationController(rootViewController: controller)
+        
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
+    }
+    
+    func showMessages() {
+        print("DEBUG: Show messages")
     }
 }

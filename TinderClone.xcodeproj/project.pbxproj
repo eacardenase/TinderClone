@@ -15,6 +15,7 @@
 		2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */; };
 		2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F429D33797002828F4 /* BottomControlsStackView.swift */; };
 		2041D1F729D340E1002828F4 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F629D340E1002828F4 /* CardView.swift */; };
+		20498E9129D7BC15006E739F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20498E9029D7BC15006E739F /* SettingsController.swift */; };
 		204EAE3229D48922000E545D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3129D48922000E545D /* User.swift */; };
 		204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3329D48A17000E545D /* CardViewModel.swift */; };
 		204EAE3729D4C1BA000E545D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE3629D4C1BA000E545D /* LoginController.swift */; };
@@ -25,6 +26,7 @@
 		204EAE4329D4F8DC000E545D /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE4229D4F8DC000E545D /* UIViewController+Utils.swift */; };
 		204EAE4529D4FE41000E545D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EAE4429D4FE41000E545D /* CustomButton.swift */; };
 		206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */; };
+		2075764B29D87D750013D9C6 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2075764A29D87D750013D9C6 /* SettingsHeader.swift */; };
 		20A8A80A29D5DDF50074B8CF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8A80929D5DDF50074B8CF /* AuthenticationViewModel.swift */; };
 		20A8A80C29D5EEEC0074B8CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20A8A80B29D5EEEC0074B8CF /* GoogleService-Info.plist */; };
 		20A8A80F29D5F0480074B8CF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20A8A80E29D5F0480074B8CF /* FirebaseAuth */; };
@@ -47,6 +49,7 @@
 		2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		2041D1F429D33797002828F4 /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
 		2041D1F629D340E1002828F4 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		20498E9029D7BC15006E739F /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		204EAE3129D48922000E545D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		204EAE3329D48A17000E545D /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		204EAE3629D4C1BA000E545D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		204EAE4429D4FE41000E545D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2056F92B29D2788900AF978C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206FEDBD29D2677D00C12B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2075764A29D87D750013D9C6 /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		20A8A80929D5DDF50074B8CF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		20A8A80B29D5EEEC0074B8CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		20A8A81A29D60A200074B8CF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			children = (
 				204EAE3529D4C1AC000E545D /* Authentication */,
 				2004A22729CFE73F00008069 /* HomeController.swift */,
+				20498E9029D7BC15006E739F /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */,
 				2041D1F429D33797002828F4 /* BottomControlsStackView.swift */,
 				2041D1F629D340E1002828F4 /* CardView.swift */,
+				2075764A29D87D750013D9C6 /* SettingsHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,11 +278,13 @@
 				204EAE3D29D4CC9C000E545D /* CustomTextField.swift in Sources */,
 				204EAE3F29D4DD4C000E545D /* AuthButton.swift in Sources */,
 				20A8A80A29D5DDF50074B8CF /* AuthenticationViewModel.swift in Sources */,
+				20498E9129D7BC15006E739F /* SettingsController.swift in Sources */,
 				20A8A81B29D60A200074B8CF /* AuthService.swift in Sources */,
 				2041D1F729D340E1002828F4 /* CardView.swift in Sources */,
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				204EAE4529D4FE41000E545D /* CustomButton.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,
+				2075764B29D87D750013D9C6 /* SettingsHeader.swift in Sources */,
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
 				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
 				20A8A81D29D60A290074B8CF /* Service.swift in Sources */,

@@ -7,8 +7,15 @@
 
 import UIKit
 
+protocol HomeNavigationStackViewDelegate: AnyObject {
+    func showSettings()
+    func showMessages()
+}
+
 class HomeNavigationStackView: UIStackView {
     // MARK: - Properties
+    
+    weak var delegate: HomeNavigationStackViewDelegate?
     
     let settingsButton = UIButton(type: .system)
     let tinderIcon = UIImageView(image: UIImage(named: "app_icon"))
@@ -32,9 +39,24 @@ class HomeNavigationStackView: UIStackView {
         distribution = .equalCentering
         isLayoutMarginsRelativeArrangement = true
         layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
+        
+        settingsButton.addTarget(self, action: #selector(handleShowSettings), for: .touchUpInside)
+        messageButton.addTarget(self, action: #selector(handleShowMessages), for: .touchUpInside)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Actions
+
+extension HomeNavigationStackView {
+    @objc private func handleShowSettings(_ sender: UIButton) {
+        delegate?.showSettings()
+    }
+    
+    @objc private func handleShowMessages(_ sender: UIButton) {
+        delegate?.showMessages()
     }
 }
