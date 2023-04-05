@@ -12,6 +12,7 @@ class HomeController: UIViewController {
     
     // MARK: - Properties
     
+    private var user: User?
     private var viewModels = [CardViewModel]() {
         didSet {
             configureCards()
@@ -111,7 +112,7 @@ extension HomeController {
         
         Service.fetchUser(withUid: uid) { user in
             
-            print("DEBUG: User name is \(user.name)")
+            self.user = user
             
         }
     }
@@ -148,7 +149,10 @@ extension HomeController {
 extension HomeController: HomeNavigationStackViewDelegate {
     
     func showSettings() {
-        let controller = SettingsController()
+        
+        guard let user = self.user else { return }
+        
+        let controller = SettingsController(user: user)
         let nav = UINavigationController(rootViewController: controller)
         
         nav.modalPresentationStyle = .fullScreen
