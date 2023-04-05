@@ -18,9 +18,9 @@ class SettingsController: UITableViewController {
     private var user: User
     weak var delegate: SettingsControllerDelegate?
     
-    private let headerView = SettingsHeader()
+    private lazy var headerView = SettingsHeader(user: user)
     private let imagePicker = UIImagePickerController()
-    private var selectedButton: UIButton?
+    private var imageIndex = 0
     
     // MARK: - Lifecycle
     
@@ -69,9 +69,7 @@ extension SettingsController {
     }
     
     private func setHeaderImage(_ image: UIImage?) {
-        guard let button = selectedButton else { return }
-        
-        button.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        headerView.buttons[imageIndex].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
 }
 
@@ -92,8 +90,8 @@ extension SettingsController {
 // MARK: - SettingsHeaderDelegate
 
 extension SettingsController: SettingsHeaderDelegate {
-    func settingsHeader(_ header: SettingsHeader, didSelect button: UIButton) {
-        selectedButton = button
+    func settingsHeader(_ header: SettingsHeader, didSelect index: Int) {
+        imageIndex = index
         
         present(imagePicker, animated: true)
     }

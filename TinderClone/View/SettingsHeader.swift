@@ -6,21 +6,26 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol SettingsHeaderDelegate: AnyObject {
-    func settingsHeader(_ header: SettingsHeader, didSelect button: UIButton)
+    func settingsHeader(_ header: SettingsHeader, didSelect index: Int)
 }
 
 class SettingsHeader: UIView {
     
     // MARK: - Properties
     
+    var buttons = [UIButton]()
     weak var delegate: SettingsHeaderDelegate?
+    private let user: User
     
     // MARK: - Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(user: User) {
+        self.user = user
+        
+        super.init(frame: .zero)
         
         configureUI()
     }
@@ -40,14 +45,16 @@ extension SettingsHeader {
     private func configureUI() {
         backgroundColor = .systemGroupedBackground
         
-        let button1 = createButton()
-        let button2 = createButton()
-        let button3 = createButton()
+        let button1 = createButton(0)
+        let button2 = createButton(1)
+        let button3 = createButton(2)
         let stackView = UIStackView(arrangedSubviews: [button2, button3])
         
         button1.translatesAutoresizingMaskIntoConstraints = false
         button2.translatesAutoresizingMaskIntoConstraints = false
         button3.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttons.append(contentsOf: [button1, button2, button3])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -72,9 +79,25 @@ extension SettingsHeader {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
+        
+        loadUsersPhotos()
     }
     
-    private func createButton() -> UIButton {
+    private func loadUsersPhotos() {
+        
+        let imageURLs = user.imageURLs.map({ URL(string: $0) })
+        
+        print(imageURLs)
+        
+        for (index, url) in imageURLs.enumerated() {
+            
+            SDWebImageManager.shared.loadImage(with: url, options: .continueInBackground, progress: nil) { image, _, _, _, _, _ in
+                self.buttons[index].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+            }
+        }
+    }
+    
+    private func createButton(_ index: Int) -> UIButton {
         let button = UIButton(type: .system)
         
         button.setTitle("Select photo", for: .normal)
@@ -83,6 +106,7 @@ extension SettingsHeader {
         button.clipsToBounds = true
         button.backgroundColor = .white
         button.imageView?.contentMode = .scaleAspectFill
+        button.tag = index
         
         return button
     }
@@ -92,6 +116,6 @@ extension SettingsHeader {
 
 extension SettingsHeader {
     @objc private func handleSelectPhoto(_ sender: UIButton) {
-        delegate?.settingsHeader(self, didSelect: sender)
+        delegate?.settingsHeader(self, didSelect: sender.tag)
     }
 }

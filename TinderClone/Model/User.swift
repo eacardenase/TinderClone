@@ -14,7 +14,7 @@ struct User {
     var bio: String
     var email: String
     let uid: String
-    let profileImageURL: String
+    let imageURLs: [String]
     var minSeekingAge: Int
     var maxSeekingAge: Int
     
@@ -25,7 +25,7 @@ struct User {
         self.bio = dictionary["bio"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""
-        self.profileImageURL = dictionary["imageURL"] as? String ?? ""
+        self.imageURLs = dictionary["imageURLs"] as? [String] ?? [String]()
         self.minSeekingAge = dictionary["minSeekingAge"] as? Int ?? 18
         self.maxSeekingAge = dictionary["maxSeekingAge"] as? Int ?? 40
     }

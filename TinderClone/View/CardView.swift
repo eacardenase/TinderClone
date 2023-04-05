@@ -77,9 +77,8 @@ class CardView: UIView {
 extension CardView {
     func setupViews() {
         
-//        imageView.image = viewModel.imageURL
         imageView.sd_setImage(with: viewModel.imageURL)
-        
+
         addSubview(imageView)
         
         configureGradient()
