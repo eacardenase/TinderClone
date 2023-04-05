@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol SettingsControllerDelegate: AnyObject {
+    func settingsController(_ controller: SettingsController, wantsToUpdate user: User)
+}
+
 class SettingsController: UITableViewController {
     
     // MARK: - Properties
     
-    private let user: User
+    private var user: User
+    weak var delegate: SettingsControllerDelegate?
+    
     private let headerView = SettingsHeader()
     private let imagePicker = UIImagePickerController()
     private var selectedButton: UIButton?
@@ -77,7 +83,9 @@ extension SettingsController {
     }
     
     @objc private func handleDone(_ sender: UIButton) {
-        print("DEBUG: Handle did drop done")
+        view.endEditing(true)
+        
+        delegate?.settingsController(self, wantsToUpdate: user)
     }
 }
 
@@ -127,6 +135,7 @@ extension SettingsController {
         let viewModel = SettingsViewModel(user: user, section: section)
         
         cell.viewModel = viewModel
+        cell.delegate = self
         
         return cell
     }
@@ -149,5 +158,27 @@ extension SettingsController {
         guard let section = SettingsSections(rawValue: indexPath.section) else { return 0 }
         
         return section == .ageRange ? 96 : 44
+    }
+}
+
+// MARK: - SettingsCellDelegate
+
+extension SettingsController: SettingsCellDelegate {
+    func settingsCell(_ cell: SettingsCell, updateWith value: String, for section: SettingsSections) {
+        
+        switch section {
+        case .name:
+            user.name = value
+        case .profession:
+            user.profession = value
+        case .age:
+            user.age = Int(value) ?? user.age
+        case .bio:
+            user.bio = value
+        case .ageRange:
+            break
+        }
+        
+        print("DEBUG: User is \(user)")
     }
 }

@@ -28,7 +28,8 @@ enum SettingsSections: Int, CaseIterable {
 struct SettingsViewModel {
     
     private let user: User
-    private let section: SettingsSections
+    
+    let section: SettingsSections
     
     var value: String?
     

@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol SettingsCellDelegate: AnyObject {
+    func settingsCell(_ cell: SettingsCell, updateWith value: String, for section: SettingsSections)
+}
+
 class SettingsCell: UITableViewCell {
     
     // MARK: Properties
+    
+    weak var delegate: SettingsCellDelegate?
     
     var viewModel: SettingsViewModel! {
         didSet {
@@ -30,6 +36,8 @@ class SettingsCell: UITableViewCell {
         
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        
+        textField.addTarget(self, action: #selector(handleUpdateUserInfo), for: .editingDidEnd)
         
         return textField
     }()
@@ -78,8 +86,9 @@ extension SettingsCell {
         inputField.translatesAutoresizingMaskIntoConstraints = false
         sliderStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(inputField)
-        addSubview(sliderStackView)
+        // in order to interact with these controls within the cell
+        contentView.addSubview(inputField)
+        contentView.addSubview(sliderStackView)
         
         // inputField
         NSLayoutConstraint.activate([
@@ -121,5 +130,12 @@ extension SettingsCell {
 extension SettingsCell {
     @objc private func handleAgeRangeChanged() {
         
+    }
+    
+    @objc private func handleUpdateUserInfo(_ sender: UITextField) {
+        
+        guard let value = sender.text else { return }
+        
+        delegate?.settingsCell(self, updateWith: value, for: viewModel.section)
     }
 }

@@ -36,6 +36,7 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         topStack.delegate = self
+//        SettingsControllerDelegate.de
         
         checkIfUserIsLoggedIn()
         configureUI()
@@ -111,9 +112,7 @@ extension HomeController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         Service.fetchUser(withUid: uid) { user in
-            
             self.user = user
-            
         }
     }
     
@@ -153,6 +152,8 @@ extension HomeController: HomeNavigationStackViewDelegate {
         guard let user = self.user else { return }
         
         let controller = SettingsController(user: user)
+        controller.delegate = self
+        
         let nav = UINavigationController(rootViewController: controller)
         
         nav.modalPresentationStyle = .fullScreen
@@ -162,5 +163,15 @@ extension HomeController: HomeNavigationStackViewDelegate {
     
     func showMessages() {
         print("DEBUG: Show messages")
+    }
+}
+
+// MARK: - SettingsControllerDelegate
+
+extension HomeController: SettingsControllerDelegate {
+    func settingsController(_ controller: SettingsController, wantsToUpdate user: User) {
+        self.user = user
+        
+        controller.dismiss(animated: true)
     }
 }
