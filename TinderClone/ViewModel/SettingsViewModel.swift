@@ -30,9 +30,7 @@ struct SettingsViewModel {
     private let user: User
     
     let section: SettingsSections
-    
     var value: String?
-    
     let placeholderText: String
     
     var shouldHideInputField: Bool {
@@ -40,6 +38,12 @@ struct SettingsViewModel {
     }
     var shouldHideSlider: Bool {
         section != .ageRange
+    }
+    var minAgeSliderValue: Float {
+        return Float(user.minSeekingAge)
+    }
+    var maxAgeSliderValue: Float {
+        return Float(user.maxSeekingAge)
     }
     
     init(user: User, section: SettingsSections) {
@@ -59,5 +63,17 @@ struct SettingsViewModel {
         case .ageRange:
             break
         }
+    }
+}
+
+// MARK: - Helpers
+
+extension SettingsViewModel {
+    func minAgeLabelText(forValue value: Float) -> String {
+        return "Min: \(Int(value))"
+    }
+    
+    func maxAgeLabelText(forValue value: Float) -> String {
+        return "Max: \(Int(value))"
     }
 }

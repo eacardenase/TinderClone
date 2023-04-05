@@ -8,7 +8,8 @@
 import UIKit
 
 protocol SettingsCellDelegate: AnyObject {
-    func settingsCell(_ cell: SettingsCell, updateWith value: String, for section: SettingsSections)
+    func settingsCell(_ cell: SettingsCell, updateUserWith value: String, for section: SettingsSections)
+    func settingsCell(_ cell: SettingsCell, updateAgeRangeWith value: UISlider)
 }
 
 class SettingsCell: UITableViewCell {
@@ -69,8 +70,7 @@ extension SettingsCell {
     
     private func configureUI () {
         
-        minAgeLabel.text = "Min: 18"
-        maxAgeLabel.text = "Max: 60"
+        selectionStyle = .none
         
         let minStackView = UIStackView(arrangedSubviews: [minAgeLabel, minAgeSlider])
         minStackView.spacing = 24
@@ -112,6 +112,12 @@ extension SettingsCell {
         
         inputField.placeholder = viewModel.placeholderText
         inputField.text = viewModel.value
+        
+        minAgeSlider.setValue(viewModel.minAgeSliderValue, animated: true)
+        maxAgeSlider.setValue(viewModel.maxAgeSliderValue, animated: true)
+        
+        minAgeLabel.text = viewModel.minAgeLabelText(forValue: viewModel.minAgeSliderValue)
+        maxAgeLabel.text = viewModel.maxAgeLabelText(forValue: viewModel.maxAgeSliderValue)
     }
     
     private func createAgeRangeSlider() -> UISlider{
@@ -128,14 +134,20 @@ extension SettingsCell {
 // MARK: - Actions
 
 extension SettingsCell {
-    @objc private func handleAgeRangeChanged() {
+    @objc private func handleAgeRangeChanged(_ sender: UISlider) {
+        if sender == minAgeSlider {
+            minAgeLabel.text = viewModel.minAgeLabelText(forValue: sender.value)
+        } else {
+            maxAgeLabel.text = viewModel.maxAgeLabelText(forValue: sender.value)
+        }
         
+        delegate?.settingsCell(self, updateAgeRangeWith: sender)
     }
     
     @objc private func handleUpdateUserInfo(_ sender: UITextField) {
         
         guard let value = sender.text else { return }
         
-        delegate?.settingsCell(self, updateWith: value, for: viewModel.section)
+        delegate?.settingsCell(self, updateUserWith: value, for: viewModel.section)
     }
 }
