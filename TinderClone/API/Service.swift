@@ -6,10 +6,26 @@
 //
 
 import UIKit
-import FirebaseCore
+import FirebaseAuth
 import FirebaseStorage
 
 struct Service {
+    
+    static func saveUserData(user: User, completion: @escaping (Error?) -> Void) {
+        let data = [
+            "uid": user.uid,
+            "fullname": user.name,
+            "email": user.email,
+            "imageURLs": user.imageURLs,
+            "age": user.age,
+            "bio": user.bio,
+            "profession": user.profession,
+            "minSeekingAge": user.minSeekingAge,
+            "maxSeekingAge": user.maxSeekingAge
+        ] as [String : Any]
+        
+        K.FStore.COLLECTION_USER.document(user.uid).setData(data, completion: completion)
+    }
     
     static func fetchUser(withUid uid: String, completion: @escaping (User) -> Void) {
         K.FStore.COLLECTION_USER.document(uid).getDocument { snapshot, error in

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol SettingsControllerDelegate: AnyObject {
     func settingsController(_ controller: SettingsController, wantsToUpdate user: User)
@@ -81,9 +82,18 @@ extension SettingsController {
     }
     
     @objc private func handleDone(_ sender: UIButton) {
+        let hud = JGProgressHUD(style: .dark)
+        
+        hud.textLabel.text = "Saving your data"
+        hud.show(in: view)
+        
         view.endEditing(true)
         
-        delegate?.settingsController(self, wantsToUpdate: user)
+        Service.saveUserData(user: user) { error in
+            self.delegate?.settingsController(self, wantsToUpdate: self.user)
+            
+            hud.dismiss()
+        }
     }
 }
 
@@ -103,9 +113,11 @@ extension SettingsController: UIImagePickerControllerDelegate, UINavigationContr
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        let image = info[.originalImage] as? UIImage
+        guard let image = info[.originalImage] as? UIImage else { fatalError("Image cannot be uploaded") }
         
         // update button's photo
+        uploadImage(image)
+        
         setHeaderImage(image)
 
         dismiss(animated: true)
@@ -183,6 +195,23 @@ extension SettingsController: SettingsCellDelegate {
             user.minSeekingAge = Int(sender.value)
         } else {
             user.maxSeekingAge = Int(sender.value)
+        }
+    }
+}
+
+// MARK: - API
+
+extension SettingsController {
+    func uploadImage(_ image: UIImage) {
+        let hud = JGProgressHUD(style: .dark)
+        
+        hud.textLabel.text = "Saving Image"
+        hud.show(in: view)
+        
+        Service.uploadImage(image: image) { imageURL in
+            self.user.imageURLs.append(imageURL)
+            
+            hud.dismiss()
         }
     }
 }
