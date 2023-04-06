@@ -36,13 +36,11 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         topStack.delegate = self
-//        SettingsControllerDelegate.de
         
         checkIfUserIsLoggedIn()
         configureUI()
         fetchUser()
         fetchUsers()
-//        logout()
     }
     
 }
@@ -173,5 +171,12 @@ extension HomeController: SettingsControllerDelegate {
         self.user = user
         
         controller.dismiss(animated: true)
+    }
+    
+    func settingsControllerWantsToLogout(_ controller: SettingsController) {
+        
+        controller.dismiss(animated: true)
+        
+        logout()
     }
 }

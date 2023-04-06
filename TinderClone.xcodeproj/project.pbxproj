@@ -11,6 +11,7 @@
 		2004A21629CFE65B00008069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21529CFE65B00008069 /* Assets.xcassets */; };
 		2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21729CFE65B00008069 /* LaunchScreen.storyboard */; };
 		2004A22829CFE73F00008069 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A22729CFE73F00008069 /* HomeController.swift */; };
+		2041154A29DE3E9300B2246B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041154929DE3E9300B2246B /* SettingsFooter.swift */; };
 		2041D1F129D32433002828F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F029D32433002828F4 /* Extensions.swift */; };
 		2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */; };
 		2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F429D33797002828F4 /* BottomControlsStackView.swift */; };
@@ -47,6 +48,7 @@
 		2004A21529CFE65B00008069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2004A21829CFE65B00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2004A22729CFE73F00008069 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		2041154929DE3E9300B2246B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		2041D1F029D32433002828F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		2041D1F429D33797002828F4 /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
@@ -180,13 +182,22 @@
 		2004A22629CFE6A200008069 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2041154B29DE3E9B00B2246B /* Settings */,
 				2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */,
 				2041D1F429D33797002828F4 /* BottomControlsStackView.swift */,
 				2041D1F629D340E1002828F4 /* CardView.swift */,
-				2075764A29D87D750013D9C6 /* SettingsHeader.swift */,
-				2075764C29D892D30013D9C6 /* SettingsCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2041154B29DE3E9B00B2246B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2075764A29D87D750013D9C6 /* SettingsHeader.swift */,
+				2075764C29D892D30013D9C6 /* SettingsCell.swift */,
+				2041154929DE3E9300B2246B /* SettingsFooter.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		204EAE3529D4C1AC000E545D /* Authentication */ = {
@@ -286,6 +297,7 @@
 				204EAE3F29D4DD4C000E545D /* AuthButton.swift in Sources */,
 				20A8A80A29D5DDF50074B8CF /* AuthenticationViewModel.swift in Sources */,
 				20498E9129D7BC15006E739F /* SettingsController.swift in Sources */,
+				2041154A29DE3E9300B2246B /* SettingsFooter.swift in Sources */,
 				20A8A81B29D60A200074B8CF /* AuthService.swift in Sources */,
 				2041D1F729D340E1002828F4 /* CardView.swift in Sources */,
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,

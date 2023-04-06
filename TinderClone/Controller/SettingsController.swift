@@ -10,6 +10,7 @@ import JGProgressHUD
 
 protocol SettingsControllerDelegate: AnyObject {
     func settingsController(_ controller: SettingsController, wantsToUpdate user: User)
+    func settingsControllerWantsToLogout(_ controller: SettingsController)
 }
 
 class SettingsController: UITableViewController {
@@ -20,6 +21,7 @@ class SettingsController: UITableViewController {
     weak var delegate: SettingsControllerDelegate?
     
     private lazy var headerView = SettingsHeader(user: user)
+    private lazy var footerView = SettingsFooter()
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
     
@@ -40,6 +42,7 @@ class SettingsController: UITableViewController {
         
         headerView.delegate = self
         imagePicker.delegate = self
+        footerView.delegate = self
     
         configureUI()
     }
@@ -58,6 +61,9 @@ extension SettingsController {
         
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
         tableView.tableHeaderView = headerView
+        
+        footerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 88)
+        tableView.tableFooterView = footerView
     }
     
     private func configureBar() {
@@ -104,6 +110,14 @@ extension SettingsController: SettingsHeaderDelegate {
         imageIndex = index
         
         present(imagePicker, animated: true)
+    }
+}
+
+// MARK: - SettingsFooterDelegate
+
+extension SettingsController: SettingsFooterDelegate {
+    func handleLogout() {
+        delegate?.settingsControllerWantsToLogout(self)
     }
 }
 
