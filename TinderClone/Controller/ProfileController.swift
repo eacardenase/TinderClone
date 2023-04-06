@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileController: UIViewController {
     
     // MARK: - Properties
     
     private let user: User
+    
+    private lazy var viewModel = ProfileViewModel(user: user)
     
     private lazy var collectionView: UICollectionView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width + 100)
@@ -33,7 +36,6 @@ class ProfileController: UIViewController {
     private var infoLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Megan Fox - 20"
         label.numberOfLines = 0
         
         return label
@@ -41,7 +43,6 @@ class ProfileController: UIViewController {
     private var professionLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Actress"
         label.font = UIFont.systemFont(ofSize: 20)
         
         return label
@@ -50,7 +51,6 @@ class ProfileController: UIViewController {
     private var bioLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "I was in transformers"
         label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 0
         
@@ -105,6 +105,7 @@ class ProfileController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadUserData()
         configureUI()
     }
 }
@@ -165,23 +166,28 @@ extension ProfileController {
         
         return button
     }
+    
+    func loadUserData() {
+        infoLabel.attributedText = viewModel.userDetailsAttributedString
+        professionLabel.text = viewModel.profession
+        bioLabel.text = viewModel.bio
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension ProfileController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user.imageURLs.count
+        return viewModel.imageCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as? ProfileCell
+        else { fatalError("Error downcasting table view cell into ProfileCell") }
         
-        if indexPath.row == 0 {
-            cell.backgroundColor = .red
-        } else {
-            cell.backgroundColor = .blue
-        }
+        guard let imageURL = viewModel.imageURLs[indexPath.item] else { return cell }
+        
+        cell.imageView.sd_setImage(with: imageURL)
         
         return cell
     }

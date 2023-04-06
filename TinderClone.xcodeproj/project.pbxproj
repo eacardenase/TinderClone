@@ -14,6 +14,7 @@
 		20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */; };
 		20224FB229DF6D03006BF9AB /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB129DF6D03006BF9AB /* ProfileController.swift */; };
 		20224FB429DF720D006BF9AB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB329DF720D006BF9AB /* ProfileCell.swift */; };
+		20224FB629DF86DB006BF9AB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB529DF86DB006BF9AB /* ProfileViewModel.swift */; };
 		2041154A29DE3E9300B2246B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041154929DE3E9300B2246B /* SettingsFooter.swift */; };
 		2041D1F129D32433002828F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F029D32433002828F4 /* Extensions.swift */; };
 		2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */; };
@@ -54,6 +55,7 @@
 		20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		20224FB129DF6D03006BF9AB /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		20224FB329DF720D006BF9AB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		20224FB529DF86DB006BF9AB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2041154929DE3E9300B2246B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		2041D1F029D32433002828F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				204EAE3329D48A17000E545D /* CardViewModel.swift */,
 				20A8A80929D5DDF50074B8CF /* AuthenticationViewModel.swift */,
 				2075764E29D8947E0013D9C6 /* SettingsViewModel.swift */,
+				20224FB529DF86DB006BF9AB /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			files = (
 				2075764D29D892D30013D9C6 /* SettingsCell.swift in Sources */,
 				204EAE3D29D4CC9C000E545D /* CustomTextField.swift in Sources */,
+				20224FB629DF86DB006BF9AB /* ProfileViewModel.swift in Sources */,
 				204EAE3F29D4DD4C000E545D /* AuthButton.swift in Sources */,
 				20A8A80A29D5DDF50074B8CF /* AuthenticationViewModel.swift in Sources */,
 				20498E9129D7BC15006E739F /* SettingsController.swift in Sources */,
