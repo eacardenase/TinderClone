@@ -13,9 +13,15 @@ enum SwipeDirection: Int {
     case right = 1
 }
 
+protocol CardViewDelegate: AnyObject {
+    func cardView(_ view: CardView, wantsToShowProfileFor user: User)
+}
+
 class CardView: UIView {
     
     // MARK: - Properties
+    
+    weak var delegate: CardViewDelegate?
     
     private let viewModel: CardViewModel
     
@@ -40,6 +46,7 @@ class CardView: UIView {
         let button = UIButton()
         
         button.setImage(UIImage(named: "info_icon")?.withRenderingMode(.alwaysOriginal), for: .normal) // .alwaysOriginal prevents the image to turn sligthly blue
+        button.addTarget(self, action: #selector(handleShowProfile), for: .touchUpInside)
         
         return button
     }()
@@ -215,5 +222,9 @@ extension CardView {
         
         barStackView.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor })
         barStackView.arrangedSubviews[viewModel.index].backgroundColor = .white
+    }
+    
+    @objc func handleShowProfile(_ sender: UIButton) {
+        delegate?.cardView(self, wantsToShowProfileFor: viewModel.user)
     }
 }

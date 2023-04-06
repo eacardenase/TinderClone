@@ -77,6 +77,7 @@ extension HomeController {
             let cardView = CardView(viewModel: viewModel)
             
             cardView.translatesAutoresizingMaskIntoConstraints = false
+            cardView.delegate = self
             
             deckView.addSubview(cardView)
             
@@ -178,5 +179,17 @@ extension HomeController: SettingsControllerDelegate {
         controller.dismiss(animated: true)
         
         logout()
+    }
+}
+
+// MARK: - CardViewDelegate
+
+extension HomeController: CardViewDelegate {
+    func cardView(_ view: CardView, wantsToShowProfileFor user: User) {
+        let controller = ProfileController(user: user)
+        
+        controller.modalPresentationStyle = .fullScreen
+        
+        present(controller, animated: true)
     }
 }

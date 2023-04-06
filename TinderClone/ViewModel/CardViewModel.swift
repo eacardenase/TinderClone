@@ -9,7 +9,7 @@ import UIKit
 
 class CardViewModel {
     
-    private let user: User
+    let user: User
     let userInfoText: NSAttributedString
     
     var imageURL: URL?
