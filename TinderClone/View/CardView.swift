@@ -45,6 +45,7 @@ class CardView: UIView {
     }()
     
     private let gradientLayer = CAGradientLayer()
+    private let barStackView = UIStackView()
     
     // MARK: - Lifecycle
     
@@ -53,10 +54,6 @@ class CardView: UIView {
         self.viewModel = viewModel
         
         super.init(frame: .zero)
-        
-        backgroundColor = .systemPurple
-        layer.cornerRadius = 10
-        clipsToBounds = true
         
         configureGestureRecognizers()
         setupViews()
@@ -77,10 +74,14 @@ class CardView: UIView {
 extension CardView {
     func setupViews() {
         
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        
         imageView.sd_setImage(with: viewModel.imageURL)
 
         addSubview(imageView)
         
+        configureBarStackView()
         configureGradient()
         
         addSubview(infoLabel)
@@ -158,6 +159,30 @@ extension CardView {
             }
         }
     }
+    
+    private func configureBarStackView() {
+        for _ in (0..<viewModel.imageURLs.count) {
+            let barView = UIView()
+            
+            barView.backgroundColor = UIColor.barDeselectedColor
+            barStackView.addArrangedSubview(barView)
+        }
+        
+        barStackView.translatesAutoresizingMaskIntoConstraints = false
+        barStackView.spacing = 4
+        barStackView.distribution = .fillEqually
+        barStackView.arrangedSubviews.first?.backgroundColor = .white
+        
+        addSubview(barStackView)
+        
+        // barStackView
+        NSLayoutConstraint.activate([
+            barStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            barStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            barStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            barStackView.heightAnchor.constraint(equalToConstant: 4)
+        ])
+    }
 }
 
 // MARK: - Actions
@@ -186,6 +211,9 @@ extension CardView {
             viewModel.showPreviousPhoto()
         }
         
-//        imageView.image = viewModel.imageURL
+        imageView.sd_setImage(with: viewModel.imageURL)
+        
+        barStackView.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor })
+        barStackView.arrangedSubviews[viewModel.index].backgroundColor = .white
     }
 }

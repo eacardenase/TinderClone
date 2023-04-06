@@ -11,9 +11,9 @@ public struct AnchoredConstraints {
     public var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
 
-extension UIColor {
-    static let barDeselectedColor = UIColor(white: 0, alpha: 0.1)
-}
+//extension UIColor {
+//    static let barDeselectedColor = UIColor(white: 0, alpha: 0.1)
+//}
 
 //extension UIViewController {
 //    func configureGradientLayer() {

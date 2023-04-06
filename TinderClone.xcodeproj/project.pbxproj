@@ -11,6 +11,7 @@
 		2004A21629CFE65B00008069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21529CFE65B00008069 /* Assets.xcassets */; };
 		2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21729CFE65B00008069 /* LaunchScreen.storyboard */; };
 		2004A22829CFE73F00008069 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A22729CFE73F00008069 /* HomeController.swift */; };
+		20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */; };
 		2041154A29DE3E9300B2246B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041154929DE3E9300B2246B /* SettingsFooter.swift */; };
 		2041D1F129D32433002828F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F029D32433002828F4 /* Extensions.swift */; };
 		2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */; };
@@ -48,6 +49,7 @@
 		2004A21529CFE65B00008069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2004A21829CFE65B00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2004A22729CFE73F00008069 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		2041154929DE3E9300B2246B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		2041D1F029D32433002828F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				204EAE4229D4F8DC000E545D /* UIViewController+Utils.swift */,
 				204EAE4429D4FE41000E545D /* CustomButton.swift */,
 				20CB72B729D7309700646525 /* Constants.swift */,
+				20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				204EAE4529D4FE41000E545D /* CustomButton.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,
+				20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */,
 				2075764B29D87D750013D9C6 /* SettingsHeader.swift in Sources */,
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
 				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
