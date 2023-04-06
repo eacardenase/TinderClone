@@ -15,6 +15,7 @@
 		20224FB229DF6D03006BF9AB /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB129DF6D03006BF9AB /* ProfileController.swift */; };
 		20224FB429DF720D006BF9AB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB329DF720D006BF9AB /* ProfileCell.swift */; };
 		20224FB629DF86DB006BF9AB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB529DF86DB006BF9AB /* ProfileViewModel.swift */; };
+		20224FB829DF8E55006BF9AB /* SegmentedBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB729DF8E55006BF9AB /* SegmentedBarView.swift */; };
 		2041154A29DE3E9300B2246B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041154929DE3E9300B2246B /* SettingsFooter.swift */; };
 		2041D1F129D32433002828F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F029D32433002828F4 /* Extensions.swift */; };
 		2041D1F329D324BB002828F4 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */; };
@@ -56,6 +57,7 @@
 		20224FB129DF6D03006BF9AB /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		20224FB329DF720D006BF9AB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		20224FB529DF86DB006BF9AB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		20224FB729DF8E55006BF9AB /* SegmentedBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedBarView.swift; sourceTree = "<group>"; };
 		2041154929DE3E9300B2246B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		2041D1F029D32433002828F4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2041D1F229D324BB002828F4 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				2041D1F429D33797002828F4 /* BottomControlsStackView.swift */,
 				2041D1F629D340E1002828F4 /* CardView.swift */,
 				20224FB329DF720D006BF9AB /* ProfileCell.swift */,
+				20224FB729DF8E55006BF9AB /* SegmentedBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				2041154A29DE3E9300B2246B /* SettingsFooter.swift in Sources */,
 				20A8A81B29D60A200074B8CF /* AuthService.swift in Sources */,
 				2041D1F729D340E1002828F4 /* CardView.swift in Sources */,
+				20224FB829DF8E55006BF9AB /* SegmentedBarView.swift in Sources */,
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				204EAE4529D4FE41000E545D /* CustomButton.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,

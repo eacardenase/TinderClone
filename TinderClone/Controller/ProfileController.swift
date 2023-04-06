@@ -15,6 +15,7 @@ class ProfileController: UIViewController {
     private let user: User
     
     private lazy var viewModel = ProfileViewModel(user: user)
+    private lazy var barStackView = SegmentedBarView(numberOfSegments: viewModel.imageURLs.count)
     
     private lazy var collectionView: UICollectionView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width + 100)
@@ -128,8 +129,10 @@ extension ProfileController {
         //        collectionView.translatesAutoresizingMaskIntoConstraints = false // we don't use it in order to position it at default values (0, 0)
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
         infoStackView.translatesAutoresizingMaskIntoConstraints = false
+        barStackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(collectionView)
+        view.addSubview(barStackView)
         view.addSubview(dismissButton)
         view.addSubview(infoStackView)
         view.addSubview(buttonsStackView)
@@ -155,6 +158,15 @@ extension ProfileController {
             buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
             buttonsStackView.heightAnchor.constraint(equalToConstant: 80),
             buttonsStackView.widthAnchor.constraint(equalToConstant: 300)
+        ])
+        
+        
+        // barStackView
+        NSLayoutConstraint.activate([
+            barStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            barStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            barStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            barStackView.heightAnchor.constraint(equalToConstant: 4)
         ])
     }
     
@@ -196,7 +208,9 @@ extension ProfileController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension ProfileController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        barStackView.setHighlightedBar(indexPath.item)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
