@@ -17,6 +17,13 @@ class ProfileController: UIViewController {
     private lazy var viewModel = ProfileViewModel(user: user)
     private lazy var barStackView = SegmentedBarView(numberOfSegments: viewModel.imageURLs.count)
     
+    private let blurView: UIVisualEffectView = {
+        let blur = UIBlurEffect(style: .regular)
+        let view = UIVisualEffectView(effect: blur)
+        
+        return view
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width + 100)
         let layout = UICollectionViewFlowLayout()
@@ -127,15 +134,26 @@ extension ProfileController {
         buttonsStackView.spacing = -32
         
         //        collectionView.translatesAutoresizingMaskIntoConstraints = false // we don't use it in order to position it at default values (0, 0)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
         dismissButton.translatesAutoresizingMaskIntoConstraints = false
         infoStackView.translatesAutoresizingMaskIntoConstraints = false
         barStackView.translatesAutoresizingMaskIntoConstraints = false
         
+//        view.addSubview(blurView)
         view.addSubview(collectionView)
+        view.addSubview(blurView)
         view.addSubview(barStackView)
         view.addSubview(dismissButton)
         view.addSubview(infoStackView)
         view.addSubview(buttonsStackView)
+        
+        // blurView
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            blurView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
         
         // dismissButton
         NSLayoutConstraint.activate([
@@ -160,10 +178,9 @@ extension ProfileController {
             buttonsStackView.widthAnchor.constraint(equalToConstant: 300)
         ])
         
-        
         // barStackView
         NSLayoutConstraint.activate([
-            barStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            barStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             barStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             barStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
             barStackView.heightAnchor.constraint(equalToConstant: 4)
