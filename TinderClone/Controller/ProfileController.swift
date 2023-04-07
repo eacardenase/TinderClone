@@ -8,11 +8,17 @@
 import UIKit
 import SDWebImage
 
+protocol ProfileControllerDelegate: AnyObject {
+    func profileController(_ controller: ProfileController, didLikeUser user: User)
+    func profileController(_ controller: ProfileController, didDislikeUser user: User)
+}
+
 class ProfileController: UIViewController {
     
     // MARK: - Properties
     
     private let user: User
+    weak var delegate: ProfileControllerDelegate?
     
     private lazy var viewModel = ProfileViewModel(user: user)
     private lazy var barStackView = SegmentedBarView(numberOfSegments: viewModel.imageURLs.count)
@@ -253,7 +259,7 @@ extension ProfileController {
     }
     
     @objc func handleDislike(_ sender: UIButton) {
-        
+        delegate?.profileController(self, didDislikeUser: user)
     }
     
     @objc func handleSuperlike(_ sender: UIButton) {
@@ -261,6 +267,6 @@ extension ProfileController {
     }
     
     @objc func handleLike(_ sender: UIButton) {
-        
+        delegate?.profileController(self, didLikeUser: user)
     }
 }
