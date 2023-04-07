@@ -13,8 +13,10 @@ enum SwipeDirection: Int {
     case right = 1
 }
 
+// We use this delegate to avoid calling the API from a view
 protocol CardViewDelegate: AnyObject {
     func cardView(_ view: CardView, wantsToShowProfileFor user: User)
+    func cardView(_ view: CardView, didLikeUser: Bool)
 }
 
 class CardView: UIView {
@@ -162,7 +164,8 @@ extension CardView {
             }
         }) { _ in
             if shouldDismissCard {
-                self.removeFromSuperview()
+                let didLike = direction == .right
+                self.delegate?.cardView(self, didLikeUser: didLike)
             }
         }
     }

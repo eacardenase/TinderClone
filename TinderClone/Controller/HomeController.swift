@@ -216,6 +216,18 @@ extension HomeController: SettingsControllerDelegate {
 // MARK: - CardViewDelegate
 
 extension HomeController: CardViewDelegate {
+    func cardView(_ view: CardView, didLikeUser: Bool) {
+        view.removeFromSuperview()
+        
+        cardViews.removeAll(where: { view == $0 })
+        
+        guard let user = topCardView?.viewModel.user else { return }
+        
+        Service.saveSwipe(forUser: user, isLike: didLikeUser)
+        
+        self.topCardView = cardViews.last
+    }
+    
     func cardView(_ view: CardView, wantsToShowProfileFor user: User) {
         let controller = ProfileController(user: user)
         
@@ -231,11 +243,15 @@ extension HomeController: BottomControllerStackViewDelegate {
     func handleLike() {
         guard let topCard = topCardView else { return }
         
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: true)
+        
         performSwipeAnimation(withCard: topCard, shouldLike: true)
     }
     
     func handleDislike() {
         guard let topCard = topCardView else { return }
+        
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: false)
         
         performSwipeAnimation(withCard: topCard, shouldLike: false)
     }

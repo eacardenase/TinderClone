@@ -82,4 +82,25 @@ struct Service {
         }
     }
     
+    static func saveSwipe(forUser user: User, isLike: Bool) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        K.FStore.COLLECTION_SWIPES.document(uid).getDocument { snapshot, error in
+            
+            if let error = error {
+                print("DEBUG: Error saving swipe \(error.localizedDescription)")
+                
+                return
+            }
+            
+            let data = [user.uid: isLike]
+            
+            if snapshot?.exists == true {
+                K.FStore.COLLECTION_SWIPES.document(uid).updateData(data)
+            } else {
+                K.FStore.COLLECTION_SWIPES.document(uid).setData(data)
+            }
+        }
+    }
+    
 }
