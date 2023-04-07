@@ -139,7 +139,6 @@ extension ProfileController {
         infoStackView.translatesAutoresizingMaskIntoConstraints = false
         barStackView.translatesAutoresizingMaskIntoConstraints = false
         
-//        view.addSubview(blurView)
         view.addSubview(collectionView)
         view.addSubview(blurView)
         view.addSubview(barStackView)

@@ -23,7 +23,7 @@ class CardView: UIView {
     
     weak var delegate: CardViewDelegate?
     
-    private let viewModel: CardViewModel
+    let viewModel: CardViewModel
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()

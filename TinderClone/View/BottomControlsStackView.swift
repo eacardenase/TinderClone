@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol BottomControllerStackViewDelegate: AnyObject {
+    func handleLike()
+    func handleDislike()
+    func handleRefresh()
+}
+
 class BottomControlsStackView: UIStackView {
     
     // MARK: - Properties
+    
+    weak var delegate: BottomControllerStackViewDelegate?
     
     let refreshButton = UIButton()
     let dislikeButton = UIButton()
@@ -22,6 +30,18 @@ class BottomControlsStackView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureUI()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Helpers
+
+extension BottomControlsStackView {
+    func configureUI() {
         distribution = .fillEqually // or .equalCentering
 
         heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -35,9 +55,25 @@ class BottomControlsStackView: UIStackView {
         [refreshButton, dislikeButton, superLikeButton, likeButton, boostButton].forEach { view in
             addArrangedSubview(view)
         }
+        
+        refreshButton.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
+        dislikeButton.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
+    }
+}
+
+// MARK: - Actions
+
+extension BottomControlsStackView {
+    @objc func handleRefresh(_ sender: UIButton) {
+        delegate?.handleRefresh()
     }
     
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func handleLike(_ sender: UIButton) {
+        delegate?.handleLike()
+    }
+    
+    @objc func handleDislike(_ sender: UIButton) {
+        delegate?.handleDislike()
     }
 }

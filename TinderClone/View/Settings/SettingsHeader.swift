@@ -87,8 +87,6 @@ extension SettingsHeader {
         
         let imageURLs = user.imageURLs.map({ URL(string: $0) })
         
-        print(imageURLs)
-        
         for (index, url) in imageURLs.enumerated() {
             
             SDWebImageManager.shared.loadImage(with: url, options: .continueInBackground, progress: nil) { image, _, _, _, _, _ in
