@@ -12,6 +12,7 @@ class LoginController: UIViewController {
     // MARK: - Properties
     
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthenticationDelegate?
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -128,14 +129,17 @@ extension LoginController {
                 return
             }
             
-            self.dismiss(animated: true)
+            self.delegate?.authenticationComplete()
         }
         
     }
     
     @objc private func handleShowRegistration(_ sender: UIButton) {
         
-        navigationController?.pushViewController(RegistrationController(), animated: true)
+        let controller = RegistrationController()
+        controller.delegate = delegate
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc private func textDidChange(_ sender: UITextField) {

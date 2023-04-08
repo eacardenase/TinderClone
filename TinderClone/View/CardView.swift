@@ -85,6 +85,7 @@ extension CardView {
         
         layer.cornerRadius = 10
         clipsToBounds = true
+        backgroundColor = .white
         
         imageView.sd_setImage(with: viewModel.imageURL)
 

@@ -45,6 +45,7 @@
 		20A8A81B29D60A200074B8CF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8A81A29D60A200074B8CF /* AuthService.swift */; };
 		20A8A81D29D60A290074B8CF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8A81C29D60A290074B8CF /* Service.swift */; };
 		20CB72B829D7309700646525 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CB72B729D7309700646525 /* Constants.swift */; };
+		20EE5DF929E0E5690070B146 /* AuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE5DF829E0E5690070B146 /* AuthenticationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		20A8A81C29D60A290074B8CF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		20C9CFA029CFE86500BF6446 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		20CB72B729D7309700646525 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		20EE5DF829E0E5690070B146 /* AuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 			children = (
 				204EAE3629D4C1BA000E545D /* LoginController.swift */,
 				204EAE3829D4C1C3000E545D /* RegistrationController.swift */,
+				20EE5DF829E0E5690070B146 /* AuthenticationDelegate.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				204EAE3929D4C1C3000E545D /* RegistrationController.swift in Sources */,
 				206FEDBE29D2677D00C12B82 /* SceneDelegate.swift in Sources */,
 				20CB72B829D7309700646525 /* Constants.swift in Sources */,
+				20EE5DF929E0E5690070B146 /* AuthenticationDelegate.swift in Sources */,
 				2041D1F129D32433002828F4 /* Extensions.swift in Sources */,
 				204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */,
 				204EAE3729D4C1BA000E545D /* LoginController.swift in Sources */,

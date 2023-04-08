@@ -43,10 +43,8 @@ class HomeController: UIViewController {
         
         checkIfUserIsLoggedIn()
         configureUI()
-        fetchUser()
-        fetchUsers()
+        fetchCurrentUserAndCards()
     }
-    
 }
 
 // MARK: - Helpers
@@ -102,8 +100,9 @@ extension HomeController {
     private func presentLoginController() {
         DispatchQueue.main.async {
             let controller = LoginController()
-            let nav = UINavigationController(rootViewController: controller)
+            controller.delegate = self
             
+            let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             
             self.present(nav, animated: true)
@@ -137,15 +136,6 @@ extension HomeController {
 
 extension HomeController {
     
-    private func fetchUser() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        Service.fetchUser(withUid: uid) { user in
-            self.user = user
-        }
-    }
-    
     private func fetchUsers() {
         
         Service.fetchUsers { users in
@@ -169,6 +159,15 @@ extension HomeController {
             presentLoginController()
         } catch {
             print("DEBUG: Failed to sign out \(error.localizedDescription)")
+        }
+    }
+    
+    private func fetchCurrentUserAndCards() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Service.fetchUser(withUid: uid) { user in
+            self.user = user
+            self.fetchUsers()
         }
     }
 }
@@ -281,5 +280,15 @@ extension HomeController: ProfileControllerDelegate {
             self.performSwipeAnimation(withCard: topCard, shouldLike: false)
             Service.saveSwipe(forUser: user, isLike: false)
         }
+    }
+}
+
+// MARK: - AuthenticationDelegate
+
+extension HomeController: AuthenticationDelegate {
+    func authenticationComplete() {
+        dismiss(animated: true)
+        
+        fetchCurrentUserAndCards()
     }
 }
