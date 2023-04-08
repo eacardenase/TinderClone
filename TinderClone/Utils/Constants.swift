@@ -9,7 +9,7 @@ import FirebaseFirestore
 
 struct K {
     struct FStore {
-        static let COLLECTION_USER = Firestore.firestore().collection("users")
+        static let COLLECTION_USERS = Firestore.firestore().collection("users")
         static let COLLECTION_SWIPES = Firestore.firestore().collection("swipes")
     }
 }

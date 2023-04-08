@@ -24,11 +24,11 @@ struct Service {
             "maxSeekingAge": user.maxSeekingAge
         ] as [String : Any]
         
-        K.FStore.COLLECTION_USER.document(user.uid).setData(data, completion: completion)
+        K.FStore.COLLECTION_USERS.document(user.uid).setData(data, completion: completion)
     }
     
     static func fetchUser(withUid uid: String, completion: @escaping (User) -> Void) {
-        K.FStore.COLLECTION_USER.document(uid).getDocument { snapshot, error in
+        K.FStore.COLLECTION_USERS.document(uid).getDocument { snapshot, error in
             
             guard let userData = snapshot?.data() else { return }
             let user = User(dictionary: userData)
@@ -37,10 +37,14 @@ struct Service {
         }
     }
     
-    static func fetchUsers(completion: @escaping ([User]) -> Void) {
+    static func fetchUsers(forCurrentUser user: User, completion: @escaping ([User]) -> Void) {
         var users = [User]()
         
-        K.FStore.COLLECTION_USER.getDocuments { snapshot, error in
+        let query = K.FStore.COLLECTION_USERS
+            .whereField("age", isGreaterThanOrEqualTo: user.minSeekingAge)
+            .whereField("age", isLessThanOrEqualTo: user.maxSeekingAge)
+        
+        query.getDocuments { snapshot, error in
             snapshot?.documents.forEach({ document in
                 let user = User(dictionary: document.data())
                 

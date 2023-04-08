@@ -47,7 +47,7 @@ struct AuthService {
                     "age": 19
                 ] as [String: Any]
                 
-                K.FStore.COLLECTION_USER.document(uid).setData(data, completion: completion)
+                K.FStore.COLLECTION_USERS.document(uid).setData(data, completion: completion)
             }
         }
         

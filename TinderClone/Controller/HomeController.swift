@@ -137,9 +137,9 @@ extension HomeController {
 
 extension HomeController {
     
-    private func fetchUsers() {
+    private func fetchUsers(forCurrentUser user: User) {
         
-        Service.fetchUsers { users in
+        Service.fetchUsers(forCurrentUser: user) { users in
             self.viewModels = users.map({ CardViewModel(user: $0) })
         }
         
@@ -168,7 +168,7 @@ extension HomeController {
         
         Service.fetchUser(withUid: uid) { user in
             self.user = user
-            self.fetchUsers()
+            self.fetchUsers(forCurrentUser: user)
         }
     }
 }
