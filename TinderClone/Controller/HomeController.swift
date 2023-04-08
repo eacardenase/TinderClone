@@ -76,6 +76,7 @@ extension HomeController {
     func configureCards() {
         
         viewModels.forEach { viewModel in
+            
             let cardView = CardView(viewModel: viewModel)
             
             cardView.translatesAutoresizingMaskIntoConstraints = false

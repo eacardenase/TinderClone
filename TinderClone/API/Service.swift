@@ -44,6 +44,8 @@ struct Service {
             snapshot?.documents.forEach({ document in
                 let user = User(dictionary: document.data())
                 
+                guard user.uid != Auth.auth().currentUser?.uid else { return }
+                
                 users.append(user)
             })
             
