@@ -1,0 +1,225 @@
+//
+//  MatchView.swift
+//  TinderClone
+//
+//  Created by Edwin Cardenas on 4/10/23.
+//
+
+import UIKit
+
+class MatchView: UIView {
+    
+    // MARK: - Properties
+    
+    private let currentUser: User
+    private let matchedUser: User
+    
+    private let matchImageView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.image = UIImage(named: "itsamatch")
+        imageView.contentMode = .scaleAspectFill
+        
+        return imageView
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "You and Megan Fox have liked each other!"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let currentUserImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "jane1"))
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.white.cgColor
+        
+        return imageView
+    }()
+    
+    private let matchedUserImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "jane2"))
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.white.cgColor
+        
+        return imageView
+    }()
+    
+    private let imageViewDimension: CGFloat = 140
+    
+    private let sendMessageButton: UIButton = {
+        let button = SendMessageButton(type: .system)
+        
+        button.setTitle("SEND MESSAGE", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(didTapSendMessage), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let keepSwipingButton: UIButton = {
+        let button = KeepSwipingButton(type: .system)
+        
+        button.setTitle("Keep Swiping", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(didTapKeepSwiping), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    let visualEffectView: UIVisualEffectView = {
+        let blur = UIBlurEffect(style: .dark)
+        let view = UIVisualEffectView(effect: blur)
+        
+        view.alpha = 0
+        
+        return view
+    }()
+    
+    lazy var views = [
+        matchImageView,
+        descriptionLabel,
+        currentUserImageView,
+        matchedUserImageView,
+        sendMessageButton,
+        keepSwipingButton
+    ]
+    
+    // MARK: - Lifecycle
+    
+    init(currentUser: User, matchedUser: User) {
+        self.currentUser = currentUser
+        self.matchedUser = matchedUser
+        
+        super.init(frame: .zero)
+        
+        configureBlurView()
+        configureUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        CGSize(width: 200, height: 200)
+    }
+}
+
+// MARK: - Helpers
+
+extension MatchView {
+    private func configureBlurView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissal))
+        
+        visualEffectView.addGestureRecognizer(tap)
+        
+        addSubview(visualEffectView)
+        
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // visualEffectView
+        NSLayoutConstraint.activate([
+            visualEffectView.topAnchor.constraint(equalTo: topAnchor),
+            visualEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            visualEffectView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            visualEffectView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.visualEffectView.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func configureUI() {
+        views.forEach { view in
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.alpha = 1
+
+            addSubview(view)
+        }
+        
+        // currentUserImageView
+        NSLayoutConstraint.activate([
+            currentUserImageView.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -16),
+            currentUserImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            currentUserImageView.heightAnchor.constraint(equalToConstant: imageViewDimension),
+            currentUserImageView.widthAnchor.constraint(equalToConstant: imageViewDimension),
+        ])
+        
+        currentUserImageView.layer.cornerRadius = imageViewDimension / 2
+        
+        // matchedUserImageView
+        NSLayoutConstraint.activate([
+            matchedUserImageView.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 16),
+            matchedUserImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            matchedUserImageView.heightAnchor.constraint(equalToConstant: imageViewDimension),
+            matchedUserImageView.widthAnchor.constraint(equalToConstant: imageViewDimension),
+        ])
+        
+        matchedUserImageView.layer.cornerRadius = imageViewDimension / 2
+
+        // sendMessageButton
+        NSLayoutConstraint.activate([
+            sendMessageButton.topAnchor.constraint(equalTo: currentUserImageView.bottomAnchor, constant: 32),
+            sendMessageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
+            sendMessageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
+            sendMessageButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+
+        // keepSwipingButton
+        NSLayoutConstraint.activate([
+            keepSwipingButton.topAnchor.constraint(equalTo: sendMessageButton.bottomAnchor, constant: 16),
+            keepSwipingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
+            keepSwipingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
+            keepSwipingButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+
+        // descriptionLabel
+        NSLayoutConstraint.activate([
+            descriptionLabel.bottomAnchor.constraint(equalTo: currentUserImageView.topAnchor, constant: -32),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+
+        // matchImageView
+        NSLayoutConstraint.activate([
+            matchImageView.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -16),
+            matchImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            matchImageView.heightAnchor.constraint(equalToConstant: 80),
+            matchImageView.widthAnchor.constraint(equalToConstant: 300)
+        ])
+    }
+}
+
+// MARK: - Actions
+
+extension MatchView {
+    @objc func didTapSendMessage(_ sender: UIButton) {
+        
+    }
+    
+    @objc func didTapKeepSwiping(_ sender: UIButton) {
+        
+    }
+    
+    @objc func handleDismissal() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut) {
+            self.alpha = 0
+        } completion: { _ in
+            self.removeFromSuperview()
+        }
+    }
+}

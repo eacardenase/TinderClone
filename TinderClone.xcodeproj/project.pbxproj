@@ -36,6 +36,9 @@
 		2075764D29D892D30013D9C6 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2075764C29D892D30013D9C6 /* SettingsCell.swift */; };
 		2075764F29D8947E0013D9C6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2075764E29D8947E0013D9C6 /* SettingsViewModel.swift */; };
 		20879EC129E47AE8004790A9 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20879EC029E47AE8004790A9 /* Collection+Utils.swift */; };
+		20879EC329E4A5CD004790A9 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20879EC229E4A5CD004790A9 /* MatchView.swift */; };
+		20879EC529E4C405004790A9 /* SendMessageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20879EC429E4C405004790A9 /* SendMessageButton.swift */; };
+		20879EC729E4C40D004790A9 /* KeepSwipingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20879EC629E4C40D004790A9 /* KeepSwipingButton.swift */; };
 		20A8A80A29D5DDF50074B8CF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8A80929D5DDF50074B8CF /* AuthenticationViewModel.swift */; };
 		20A8A80C29D5EEEC0074B8CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20A8A80B29D5EEEC0074B8CF /* GoogleService-Info.plist */; };
 		20A8A80F29D5F0480074B8CF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20A8A80E29D5F0480074B8CF /* FirebaseAuth */; };
@@ -81,6 +84,9 @@
 		2075764C29D892D30013D9C6 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		2075764E29D8947E0013D9C6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		20879EC029E47AE8004790A9 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
+		20879EC229E4A5CD004790A9 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		20879EC429E4C405004790A9 /* SendMessageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageButton.swift; sourceTree = "<group>"; };
+		20879EC629E4C40D004790A9 /* KeepSwipingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSwipingButton.swift; sourceTree = "<group>"; };
 		20A8A80929D5DDF50074B8CF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		20A8A80B29D5EEEC0074B8CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		20A8A81A29D60A200074B8CF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -206,6 +212,9 @@
 				2041D1F629D340E1002828F4 /* CardView.swift */,
 				20224FB329DF720D006BF9AB /* ProfileCell.swift */,
 				20224FB729DF8E55006BF9AB /* SegmentedBarView.swift */,
+				20879EC229E4A5CD004790A9 /* MatchView.swift */,
+				20879EC429E4C405004790A9 /* SendMessageButton.swift */,
+				20879EC629E4C40D004790A9 /* KeepSwipingButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,12 +332,14 @@
 				20A8A81B29D60A200074B8CF /* AuthService.swift in Sources */,
 				2041D1F729D340E1002828F4 /* CardView.swift in Sources */,
 				20224FB829DF8E55006BF9AB /* SegmentedBarView.swift in Sources */,
+				20879EC329E4A5CD004790A9 /* MatchView.swift in Sources */,
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				204EAE4529D4FE41000E545D /* CustomButton.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,
 				20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */,
 				2075764B29D87D750013D9C6 /* SettingsHeader.swift in Sources */,
 				20224FB429DF720D006BF9AB /* ProfileCell.swift in Sources */,
+				20879EC529E4C405004790A9 /* SendMessageButton.swift in Sources */,
 				2004A20D29CFE65A00008069 /* AppDelegate.swift in Sources */,
 				20224FB229DF6D03006BF9AB /* ProfileController.swift in Sources */,
 				2004A22829CFE73F00008069 /* HomeController.swift in Sources */,
@@ -344,6 +355,7 @@
 				204EAE3429D48A17000E545D /* CardViewModel.swift in Sources */,
 				204EAE3729D4C1BA000E545D /* LoginController.swift in Sources */,
 				204EAE4329D4F8DC000E545D /* UIViewController+Utils.swift in Sources */,
+				20879EC729E4C40D004790A9 /* KeepSwipingButton.swift in Sources */,
 				2075764F29D8947E0013D9C6 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

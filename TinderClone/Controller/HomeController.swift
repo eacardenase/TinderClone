@@ -131,6 +131,23 @@ extension HomeController {
             self.topCardView = self.cardViews.last
         }
     }
+    
+    private func presentMatchView(forUser user: User) {
+        guard let currentUser = self.user else { return }
+        
+        let matchView = MatchView(currentUser: currentUser, matchedUser: user)
+        
+        matchView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(matchView)
+        
+        NSLayoutConstraint.activate([
+            matchView.topAnchor.constraint(equalTo: view.topAnchor),
+            matchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            matchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            matchView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 }
 
 // MARK: - API
@@ -179,7 +196,7 @@ extension HomeController {
             guard didLike == true else { return }
             
             Service.checkIfMatchExists(forUser: user) { didMatch in
-                print("DEBUG: Users did match")
+                self.presentMatchView(forUser: user)
             }
         }
     }
