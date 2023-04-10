@@ -223,7 +223,12 @@ extension SettingsController {
         hud.show(in: view)
         
         Service.uploadImage(image: image) { imageURL in
-            self.user.imageURLs[self.imageIndex] = imageURL
+            
+            if self.user.imageURLs[safe: self.imageIndex] == nil {
+                self.user.imageURLs.append(imageURL)
+            } else {
+                self.user.imageURLs[self.imageIndex] = imageURL
+            }
             
             hud.dismiss()
         }
