@@ -171,6 +171,18 @@ extension HomeController {
             self.fetchUsers(forCurrentUser: user)
         }
     }
+    
+    private func saveForSwipeAndCheckForMatch(forUser user: User, didLike: Bool) {
+        Service.saveSwipe(forUser: user, isLike: didLike) { error in
+            self.topCardView = self.cardViews.last
+            
+            guard didLike == true else { return }
+            
+            Service.checkIfMatchExists(forUser: user) { didMatch in
+                print("DEBUG: Users did match")
+            }
+        }
+    }
 }
 
 // MARK: - HomeNavigationStackViewDelegate
@@ -223,7 +235,7 @@ extension HomeController: CardViewDelegate {
         
         guard let user = topCardView?.viewModel.user else { return }
         
-        Service.saveSwipe(forUser: user, isLike: didLikeUser)
+        saveForSwipeAndCheckForMatch(forUser: user, didLike: didLikeUser)
         
         self.topCardView = cardViews.last
     }
@@ -243,8 +255,9 @@ extension HomeController: CardViewDelegate {
 extension HomeController: BottomControllerStackViewDelegate {
     func handleLike() {
         guard let topCard = topCardView else { return }
+        let user = topCard.viewModel.user
         
-        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: true)
+        saveForSwipeAndCheckForMatch(forUser: user, didLike: true)
         
         performSwipeAnimation(withCard: topCard, shouldLike: true)
     }
@@ -252,7 +265,7 @@ extension HomeController: BottomControllerStackViewDelegate {
     func handleDislike() {
         guard let topCard = topCardView else { return }
         
-        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: false)
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: false, completion: nil)
         
         performSwipeAnimation(withCard: topCard, shouldLike: false)
     }
@@ -270,7 +283,7 @@ extension HomeController: ProfileControllerDelegate {
         
         controller.dismiss(animated: true) {
             self.performSwipeAnimation(withCard: topCard, shouldLike: true)
-            Service.saveSwipe(forUser: user, isLike: true)
+            self.saveForSwipeAndCheckForMatch(forUser: user, didLike: true)
         }
     }
     
@@ -279,7 +292,7 @@ extension HomeController: ProfileControllerDelegate {
         
         controller.dismiss(animated: true) {
             self.performSwipeAnimation(withCard: topCard, shouldLike: false)
-            Service.saveSwipe(forUser: user, isLike: false)
+            Service.saveSwipe(forUser: user, isLike: false, completion: nil)
         }
     }
 }

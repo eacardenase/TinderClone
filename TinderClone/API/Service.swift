@@ -88,7 +88,7 @@ struct Service {
         }
     }
     
-    static func saveSwipe(forUser user: User, isLike: Bool) {
+    static func saveSwipe(forUser user: User, isLike: Bool, completion: ((Error?) -> Void)?) { // ((Error?) -> Void)? does not need escaping
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         K.FStore.COLLECTION_SWIPES.document(uid).getDocument { snapshot, error in
@@ -102,10 +102,21 @@ struct Service {
             let data = [user.uid: isLike]
             
             if snapshot?.exists == true {
-                K.FStore.COLLECTION_SWIPES.document(uid).updateData(data)
+                K.FStore.COLLECTION_SWIPES.document(uid).updateData(data, completion: completion)
             } else {
-                K.FStore.COLLECTION_SWIPES.document(uid).setData(data)
+                K.FStore.COLLECTION_SWIPES.document(uid).setData(data, completion: completion)
             }
+        }
+    }
+    
+    static func checkIfMatchExists(forUser user: User, completion: @escaping (Bool) -> Void) {
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
+        
+        K.FStore.COLLECTION_SWIPES.document(user.uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data() else { return }
+            guard let didMatch = data[currentUserUid] as? Bool else { return }
+            
+            completion(didMatch)
         }
     }
     
