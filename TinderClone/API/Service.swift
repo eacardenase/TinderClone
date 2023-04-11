@@ -107,6 +107,27 @@ struct Service {
         }
     }
     
+    static func uploadMatch(currentUser: User, matchedUser: User) {
+        guard let profileImageURL = matchedUser.imageURLs.first,
+              let currentUserProfileImageURL = currentUser.imageURLs.first  else { return }
+        
+        let matchedUserData = [
+            "uid": matchedUser.uid,
+            "name": matchedUser.name,
+            "profileImageURL": profileImageURL
+        ]
+        
+        K.FStore.COLLECTION_MATCHES_MESSAGES.document(currentUser.uid).collection("matches").document(matchedUser.uid).setData(matchedUserData)
+        
+        let currentUserData = [
+            "uid": currentUser.uid,
+            "name": currentUser.name,
+            "profileImageURL": currentUserProfileImageURL
+        ]
+        
+        K.FStore.COLLECTION_MATCHES_MESSAGES.document(matchedUser.uid).collection("matches").document(currentUser.uid).setData(currentUserData)
+    }
+    
     static func saveSwipe(forUser user: User, isLike: Bool, completion: ((Error?) -> Void)?) { // ((Error?) -> Void)? does not need escaping
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
