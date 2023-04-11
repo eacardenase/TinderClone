@@ -13,10 +13,15 @@ class MatchCell: UICollectionViewCell {
     
     static let reuseIdentifier = "MatchCell"
     
+    var viewModel: MatchCellViewModel? {
+        didSet {
+            configureCell()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
 
-        imageView.image = UIImage(named: "jane1")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 2
@@ -32,11 +37,11 @@ class MatchCell: UICollectionViewCell {
     private let usernameLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Username"
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .darkGray
         label.textAlignment = .center
         label.numberOfLines = 2
+        label.lineBreakMode = .byWordWrapping
         
         return label
     }()
@@ -75,5 +80,10 @@ extension MatchCell {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    private func configureCell() {
+        profileImageView.sd_setImage(with: viewModel?.profileImageURL)
+        usernameLabel.text = viewModel?.nameText
     }
 }

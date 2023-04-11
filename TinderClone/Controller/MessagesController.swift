@@ -33,6 +33,7 @@ class MessagesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchMatches()
         configureNavigationBar()
         configureTableView()
     }
@@ -45,6 +46,7 @@ extension MessagesController {
         tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = headerView
+        tableView.separatorStyle = .none // *
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
@@ -116,5 +118,15 @@ extension MessagesController {
         ])
         
         return view
+    }
+}
+
+// MARK: - API
+
+extension MessagesController {
+    private func fetchMatches() {
+        Service.fetchMatches { matches in
+            self.headerView.matches = matches
+        }
     }
 }

@@ -11,21 +11,7 @@ import FirebaseStorage
 
 struct Service {
     
-    static func saveUserData(user: User, completion: @escaping (Error?) -> Void) {
-        let data = [
-            "uid": user.uid,
-            "fullname": user.name,
-            "email": user.email,
-            "imageURLs": user.imageURLs,
-            "age": user.age,
-            "bio": user.bio,
-            "profession": user.profession,
-            "minSeekingAge": user.minSeekingAge,
-            "maxSeekingAge": user.maxSeekingAge
-        ] as [String : Any]
-        
-        K.FStore.COLLECTION_USERS.document(user.uid).setData(data, completion: completion)
-    }
+    // MARK: - Fetching
     
     static func fetchUser(withUid uid: String, completion: @escaping (User) -> Void) {
         K.FStore.COLLECTION_USERS.document(uid).getDocument { snapshot, error in
@@ -74,6 +60,36 @@ struct Service {
             
             completion(data)
         }
+    }
+    
+    static func fetchMatches(completion: @escaping ([Match]) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        K.FStore.COLLECTION_MATCHES_MESSAGES.document(uid).collection("matches").getDocuments { snapshot, error in
+            guard let data = snapshot else { return }
+            
+            let matches = data.documents.map({ Match(dictionary: $0.data()) })
+            
+            completion(matches)
+        }
+    }
+    
+    // MARK: - Uploads
+    
+    static func saveUserData(user: User, completion: @escaping (Error?) -> Void) {
+        let data = [
+            "uid": user.uid,
+            "fullname": user.name,
+            "email": user.email,
+            "imageURLs": user.imageURLs,
+            "age": user.age,
+            "bio": user.bio,
+            "profession": user.profession,
+            "minSeekingAge": user.minSeekingAge,
+            "maxSeekingAge": user.maxSeekingAge
+        ] as [String : Any]
+        
+        K.FStore.COLLECTION_USERS.document(user.uid).setData(data, completion: completion)
     }
     
     static func uploadImage(image: UIImage, completion: @escaping (String) -> Void) {
