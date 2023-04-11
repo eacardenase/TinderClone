@@ -44,16 +44,35 @@ struct Service {
             .whereField("age", isGreaterThanOrEqualTo: user.minSeekingAge)
             .whereField("age", isLessThanOrEqualTo: user.maxSeekingAge)
         
-        query.getDocuments { snapshot, error in
-            snapshot?.documents.forEach({ document in
-                let user = User(dictionary: document.data())
+        fetchSwipes { swipedUserIDs in
+            query.getDocuments { snapshot, error in
+                snapshot?.documents.forEach({ document in
+                    let user = User(dictionary: document.data())
+
+                    guard user.uid != Auth.auth().currentUser?.uid else { return }
+                    
+                    // if not nil (not swiped before), append to users array
+                    guard swipedUserIDs[user.uid] == nil else { return }
+                    
+                    users.append(user)
+                })
+
+                completion(users)
+            }
+        }
+    }
+    
+    private static func fetchSwipes(completion: @escaping ([String: Bool]) -> Void ) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        K.FStore.COLLECTION_SWIPES.document(uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data() as? [String: Bool] else {
+                completion([String: Bool]())
                 
-                guard user.uid != Auth.auth().currentUser?.uid else { return }
-                
-                users.append(user)
-            })
+                return
+            }
             
-            completion(users)
+            completion(data)
         }
     }
     
