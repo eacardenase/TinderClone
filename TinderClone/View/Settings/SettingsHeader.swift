@@ -18,12 +18,12 @@ class SettingsHeader: UIView {
     
     var buttons = [UIButton]()
     weak var delegate: SettingsHeaderDelegate?
-    private let user: User
+    private let viewModel: SettingsHeaderViewModel
     
     // MARK: - Lifecycle
     
-    init(user: User) {
-        self.user = user
+    init(viewModel: SettingsHeaderViewModel) {
+        self.viewModel = viewModel
         
         super.init(frame: .zero)
         
@@ -85,9 +85,7 @@ extension SettingsHeader {
     
     private func loadUsersPhotos() {
         
-        let imageURLs = user.imageURLs.map({ URL(string: $0) })
-        
-        for (index, url) in imageURLs.enumerated() {
+        for (index, url) in viewModel.imageURLs.enumerated() {
             
             SDWebImageManager.shared.loadImage(with: url, options: .continueInBackground, progress: nil) { image, _, _, _, _, _ in
                 self.buttons[index].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)

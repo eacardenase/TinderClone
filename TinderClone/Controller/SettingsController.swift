@@ -20,7 +20,7 @@ class SettingsController: UITableViewController {
     private var user: User
     weak var delegate: SettingsControllerDelegate?
     
-    private lazy var headerView = SettingsHeader(user: user)
+    private lazy var headerView = SettingsHeader(viewModel: SettingsHeaderViewModel(user: user))
     private lazy var footerView = SettingsFooter()
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
