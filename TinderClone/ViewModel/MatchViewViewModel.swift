@@ -10,7 +10,7 @@ import Foundation
 struct MatchViewViewModel {
 
     private let currentUser: User
-    private let matchedUser: User
+    let matchedUser: User
 
     let matchLabelText: String
 

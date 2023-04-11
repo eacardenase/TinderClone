@@ -139,6 +139,7 @@ extension HomeController {
         let matchView = MatchView(viewModel: viewModel)
         
         matchView.translatesAutoresizingMaskIntoConstraints = false
+        matchView.delegate = self
         
         view.addSubview(matchView)
         
@@ -322,5 +323,13 @@ extension HomeController: AuthenticationDelegate {
         dismiss(animated: true)
         
         fetchCurrentUserAndCards()
+    }
+}
+
+// MARK: - MatchViewDelegate
+
+extension HomeController: MatchViewDelegate {
+    func matchView(_ view: MatchView, wantsToSendsMessageTo user: User) {
+        print("DEBUG: Start conversation with \(user.name)")
     }
 }
