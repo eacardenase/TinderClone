@@ -31,7 +31,10 @@ class RegistrationController: UIViewController {
     private var profileImage: UIImage?
     
     private let signupButton: AuthButton = {
-        let button = AuthButton(title: "Sign Up", type: .system)
+        let button = AuthButton(type: .system)
+        
+        button.setTitle("Sign Up", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         
         button.addTarget(self, action: #selector(handleRegisterUser), for: .touchUpInside)
         

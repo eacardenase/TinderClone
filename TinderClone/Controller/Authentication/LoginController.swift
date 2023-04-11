@@ -26,8 +26,11 @@ class LoginController: UIViewController {
     private let emailTextField = CustomTextField(placeholderText: "Email")
     private let passwordTextField = CustomTextField(placeholderText: "Password", isSecure: true)
     private let authButton: AuthButton = {
-        let button = AuthButton(title: "Log In", type: .system)
+        let button = AuthButton(type: .system)
         
+        button.setTitle("Log In", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+//        button.tintColor = .white
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         
         return button

@@ -8,16 +8,10 @@
 import UIKit
 
 class AuthButton: UIButton {
-    
-    private let title: String
-    private let type: ButtonType
-    
-    init(title: String, type: ButtonType) {
+
+    override init(frame: CGRect) {
         
-        self.title = title
-        self.type = type
-        
-        super.init(frame: .zero)
+        super.init(frame: frame)
         
         configureUI()
         layout()
@@ -30,10 +24,9 @@ class AuthButton: UIButton {
 
 extension AuthButton {
     private func configureUI() {
-        setTitle(title, for: .normal)
 //        backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         backgroundColor = UIColor(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+        setTitleColor(.white, for: .normal)
         layer.cornerRadius = 5
         isEnabled = false
     }
