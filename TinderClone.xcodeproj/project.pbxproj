@@ -11,6 +11,7 @@
 		2004A21629CFE65B00008069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21529CFE65B00008069 /* Assets.xcassets */; };
 		2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21729CFE65B00008069 /* LaunchScreen.storyboard */; };
 		2004A22829CFE73F00008069 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A22729CFE73F00008069 /* HomeController.swift */; };
+		20096BE229E5B6AA00BE4897 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20096BE129E5B6AA00BE4897 /* MessagesController.swift */; };
 		20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */; };
 		20224FB229DF6D03006BF9AB /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB129DF6D03006BF9AB /* ProfileController.swift */; };
 		20224FB429DF720D006BF9AB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB329DF720D006BF9AB /* ProfileCell.swift */; };
@@ -60,6 +61,7 @@
 		2004A21529CFE65B00008069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2004A21829CFE65B00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2004A22729CFE73F00008069 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		20096BE129E5B6AA00BE4897 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
 		20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		20224FB129DF6D03006BF9AB /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		20224FB329DF720D006BF9AB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				2004A22729CFE73F00008069 /* HomeController.swift */,
 				20498E9029D7BC15006E739F /* SettingsController.swift */,
 				20224FB129DF6D03006BF9AB /* ProfileController.swift */,
+				20096BE129E5B6AA00BE4897 /* MessagesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				204EAE4329D4F8DC000E545D /* UIViewController+Utils.swift in Sources */,
 				20879EC729E4C40D004790A9 /* KeepSwipingButton.swift in Sources */,
 				2075764F29D8947E0013D9C6 /* SettingsViewModel.swift in Sources */,
+				20096BE229E5B6AA00BE4897 /* MessagesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

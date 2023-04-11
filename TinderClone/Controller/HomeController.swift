@@ -223,7 +223,17 @@ extension HomeController: HomeNavigationStackViewDelegate {
     }
     
     func showMessages() {
-        print("DEBUG: Show messages")
+        
+        guard let user = self.user else { return }
+        
+        let controller = MessagesController(user: user)
+        controller.delegate = self
+        
+        let nav = UINavigationController(rootViewController: controller)
+        
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
     }
 }
 
