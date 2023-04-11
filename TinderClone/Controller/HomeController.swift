@@ -304,7 +304,11 @@ extension HomeController: BottomControllerStackViewDelegate {
     }
     
     func handleRefresh() {
-        print("DEBUG: Handle refreshing here")
+        guard let user = self.user else { return }
+        
+        Service.fetchUsers(forCurrentUser: user) { users in
+            self.viewModels = users.map({ CardViewModel(user: $0) }) // look up for pagination
+        }
     }
 }
 
