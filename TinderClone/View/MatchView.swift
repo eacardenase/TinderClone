@@ -11,8 +11,7 @@ class MatchView: UIView {
     
     // MARK: - Properties
     
-    private let currentUser: User
-    private let matchedUser: User
+    private let viewModel: MatchViewViewModel
     
     private let matchImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,7 +25,6 @@ class MatchView: UIView {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "You and Megan Fox have liked each other!"
         label.textAlignment = .center
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20)
@@ -36,7 +34,7 @@ class MatchView: UIView {
     }()
     
     private let currentUserImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "jane1"))
+        let imageView = UIImageView()
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -47,7 +45,7 @@ class MatchView: UIView {
     }()
     
     private let matchedUserImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "jane2"))
+        let imageView = UIImageView()
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -99,12 +97,12 @@ class MatchView: UIView {
     
     // MARK: - Lifecycle
     
-    init(currentUser: User, matchedUser: User) {
-        self.currentUser = currentUser
-        self.matchedUser = matchedUser
+    init(viewModel: MatchViewViewModel) {
+        self.viewModel = viewModel
         
         super.init(frame: .zero)
         
+        loadUserData()
         configureBlurView()
         configureUI()
         configureAnimations()
@@ -122,6 +120,12 @@ class MatchView: UIView {
 // MARK: - Helpers
 
 extension MatchView {
+    private func loadUserData() {
+        descriptionLabel.text = viewModel.matchLabelText
+        currentUserImageView.sd_setImage(with: viewModel.currentUserImageURL)
+        matchedUserImageView.sd_setImage(with: viewModel.matchedUserImageURL)
+    }
+
     private func configureBlurView() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissal))
         
@@ -147,7 +151,7 @@ extension MatchView {
     private func configureUI() {
         views.forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.alpha = 1
+            view.alpha = 0
 
             addSubview(view)
         }
@@ -210,9 +214,9 @@ extension MatchView {
         let angle = 30 * CGFloat.pi / 180
         
         currentUserImageView.transform = CGAffineTransform(rotationAngle: angle)
-            .concatenating(CGAffineTransform(translationX: -200, y: 0))
-        matchedUserImageView.transform = CGAffineTransform(rotationAngle: -angle)
             .concatenating(CGAffineTransform(translationX: 200, y: 0))
+        matchedUserImageView.transform = CGAffineTransform(rotationAngle: -angle)
+            .concatenating(CGAffineTransform(translationX: -200, y: 0))
         
         self.sendMessageButton.transform = CGAffineTransform(translationX: 500, y: 0)
         self.keepSwipingButton.transform = CGAffineTransform(translationX: -500, y: 0)

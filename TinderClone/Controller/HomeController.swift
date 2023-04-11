@@ -135,7 +135,8 @@ extension HomeController {
     private func presentMatchView(forUser user: User) {
         guard let currentUser = self.user else { return }
         
-        let matchView = MatchView(currentUser: currentUser, matchedUser: user)
+        let viewModel = MatchViewViewModel(currentUser: currentUser, matchedUser: user)
+        let matchView = MatchView(viewModel: viewModel)
         
         matchView.translatesAutoresizingMaskIntoConstraints = false
         
