@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class RegistrationController: UIViewController {
     
@@ -150,14 +151,21 @@ extension RegistrationController {
         }
         
         let credentials = AuthCredentials(email: email, fullname: fullname, password: password, profileImage: profileImage)
+        let hud = JGProgressHUD(style: .dark)
+        
+        hud.show(in: view)
         
         AuthService.registerUser(withCredentials: credentials) { error in
+            hud.dismiss()
+            
             if let error = error {
                 print("DEBUG: Error signing user up: \(error.localizedDescription)")
+//                hud.dismiss()
                 
                 return
             }
             
+//            hud.dismiss()
             self.delegate?.authenticationComplete()
         }
         

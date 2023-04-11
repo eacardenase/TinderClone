@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class LoginController: UIViewController {
     
@@ -125,13 +126,21 @@ extension LoginController {
         guard let email = emailTextField.text,
         let password = passwordTextField.text else { return }
         
+        let hud = JGProgressHUD(style: .dark)
+        
+        hud.show(in: view)
+        
         AuthService.logUserIn(withEmail: email, password: password) { result, error in
+            hud.dismiss()
+            
             if let error = error {
                 print("DEBUG: Error login user in \(error.localizedDescription)")
+//                hud.dismiss()
                 
                 return
             }
             
+//            hud.dismiss()
             self.delegate?.authenticationComplete()
         }
         
