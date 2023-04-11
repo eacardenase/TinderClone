@@ -16,6 +16,8 @@ class MessagesController: UITableViewController {
     private let user: User
     weak var delegate: HomeNavigationStackViewDelegate?
     
+    private let headerView = MatchHeader()
+    
     // MARK: - Lifecycle
     
     init(user: User) {
@@ -42,8 +44,11 @@ extension MessagesController {
     private func configureTableView() {
         tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
+        tableView.tableHeaderView = headerView
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
     }
     
     private func configureNavigationBar() {

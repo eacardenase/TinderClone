@@ -12,6 +12,8 @@
 		2004A21929CFE65B00008069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2004A21729CFE65B00008069 /* LaunchScreen.storyboard */; };
 		2004A22829CFE73F00008069 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2004A22729CFE73F00008069 /* HomeController.swift */; };
 		20096BE229E5B6AA00BE4897 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20096BE129E5B6AA00BE4897 /* MessagesController.swift */; };
+		20096BE429E5E0BF00BE4897 /* MatchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20096BE329E5E0BF00BE4897 /* MatchHeader.swift */; };
+		20096BE629E5E5ED00BE4897 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20096BE529E5E5ED00BE4897 /* MatchCell.swift */; };
 		20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */; };
 		20224FB229DF6D03006BF9AB /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB129DF6D03006BF9AB /* ProfileController.swift */; };
 		20224FB429DF720D006BF9AB /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20224FB329DF720D006BF9AB /* ProfileCell.swift */; };
@@ -62,6 +64,8 @@
 		2004A21829CFE65B00008069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2004A22729CFE73F00008069 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		20096BE129E5B6AA00BE4897 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		20096BE329E5E0BF00BE4897 /* MatchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHeader.swift; sourceTree = "<group>"; };
+		20096BE529E5E5ED00BE4897 /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
 		20224FAF29DF47B1006BF9AB /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		20224FB129DF6D03006BF9AB /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		20224FB329DF720D006BF9AB /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				20879EC229E4A5CD004790A9 /* MatchView.swift */,
 				20879EC429E4C405004790A9 /* SendMessageButton.swift */,
 				20879EC629E4C40D004790A9 /* KeepSwipingButton.swift */,
+				20096BE329E5E0BF00BE4897 /* MatchHeader.swift */,
+				20096BE529E5E5ED00BE4897 /* MatchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				2075764D29D892D30013D9C6 /* SettingsCell.swift in Sources */,
 				204EAE3D29D4CC9C000E545D /* CustomTextField.swift in Sources */,
 				20224FB629DF86DB006BF9AB /* ProfileViewModel.swift in Sources */,
+				20096BE429E5E0BF00BE4897 /* MatchHeader.swift in Sources */,
 				204EAE3F29D4DD4C000E545D /* AuthButton.swift in Sources */,
 				20A8A80A29D5DDF50074B8CF /* AuthenticationViewModel.swift in Sources */,
 				20498E9129D7BC15006E739F /* SettingsController.swift in Sources */,
@@ -345,6 +352,7 @@
 				204EAE3B29D4CA83000E545D /* UITextField+Utils.swift in Sources */,
 				204EAE4529D4FE41000E545D /* CustomButton.swift in Sources */,
 				2041D1F529D33797002828F4 /* BottomControlsStackView.swift in Sources */,
+				20096BE629E5E5ED00BE4897 /* MatchCell.swift in Sources */,
 				20224FB029DF47B1006BF9AB /* UIColor+Utils.swift in Sources */,
 				2075764B29D87D750013D9C6 /* SettingsHeader.swift in Sources */,
 				20224FB429DF720D006BF9AB /* ProfileCell.swift in Sources */,
