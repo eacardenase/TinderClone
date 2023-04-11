@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol MatchHeaderDelegate: AnyObject {
+    func matchHeader(_ header: MatchHeader, wantsToChatWith uid: String)
+}
+
 class MatchHeader: UICollectionReusableView {
     
     // MARK: - Properties
+    
+    weak var delegate: MatchHeaderDelegate?
     
     var matches = [Match]() {
         didSet {
@@ -110,7 +116,11 @@ extension MatchHeader: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MatchHeader: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = matches[indexPath.item].uid
+        
+        delegate?.matchHeader(self, wantsToChatWith: uid)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

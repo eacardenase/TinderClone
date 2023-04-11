@@ -51,6 +51,7 @@ extension MessagesController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
+        headerView.delegate = self
     }
     
     private func configureNavigationBar() {
@@ -127,6 +128,16 @@ extension MessagesController {
     private func fetchMatches() {
         Service.fetchMatches { matches in
             self.headerView.matches = matches
+        }
+    }
+}
+
+// MARK: - MatchHeaderDelegate
+
+extension MessagesController: MatchHeaderDelegate {
+    func matchHeader(_ header: MatchHeader, wantsToChatWith uid: String) {
+        Service.fetchUser(withUid: uid) { user in
+            print("DEBUG: Start chat with \(user.name)")
         }
     }
 }
